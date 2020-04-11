@@ -1,0 +1,3560 @@
+{
+  "contractName": "LeagueData",
+  "abi": [
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "bets",
+      "outputs": [
+        {
+          "internalType": "uint32",
+          "name": "leagueID",
+          "type": "uint32"
+        },
+        {
+          "internalType": "int256",
+          "name": "totalScore",
+          "type": "int256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "leagues",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "tournamentID",
+          "type": "uint256"
+        },
+        {
+          "internalType": "string",
+          "name": "leagueName",
+          "type": "string"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_tournamentID",
+          "type": "uint256"
+        }
+      ],
+      "name": "updateUserScores",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.16+commit.9c3226ce\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":true,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"bets\",\"outputs\":[{\"internalType\":\"uint32\",\"name\":\"leagueID\",\"type\":\"uint32\"},{\"internalType\":\"int256\",\"name\":\"totalScore\",\"type\":\"int256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"leagues\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"tournamentID\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"leagueName\",\"type\":\"string\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_tournamentID\",\"type\":\"uint256\"}],\"name\":\"updateUserScores\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/S/GitHub/blockchain-fantasy-golf/contracts/LeagueData.sol\":\"LeagueData\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/S/GitHub/blockchain-fantasy-golf/contracts/LeagueData.sol\":{\"keccak256\":\"0x55f2ca4128478c14a20c40db227521c67d5800958f8d1a42e8a585a0f5b1409f\",\"urls\":[\"bzz-raw://3786ceffce0e5fd4fc524b6d4ce3bcaac52ba192762e3b7b4c78bcb2893b2f6c\",\"dweb:/ipfs/QmTjMTgW5C76p5qqdtoJrBg6YMXkfJJirGrCySnmEjQQcn\"]}},\"version\":1}",
+  "bytecode": "0x6080604052735b0c9dc0afe417858dcc8db5269e47abc572aa776000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055506000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff16600160006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055503480156100c657600080fd5b50610627806100d66000396000f3fe608060405234801561001057600080fd5b50600436106100415760003560e01c806322af00fa1461004657806381bbb7051461009b578063c648fefe146100c9575b600080fd5b6100726004803603602081101561005c57600080fd5b8101908080359060200190929190505050610177565b604051808363ffffffff1663ffffffff1681526020018281526020019250505060405180910390f35b6100c7600480360360208110156100b157600080fd5b81019080803590602001909291905050506101b8565b005b6100f5600480360360208110156100df57600080fd5b81019080803590602001909291905050506104c0565b6040518083815260200180602001828103825283818151815260200191508051906020019080838360005b8381101561013b578082015181840152602081019050610120565b50505050905090810190601f1680156101685780820380516001836020036101000a031916815260200191505b50935050505060405180910390f35b6003818154811061018457fe5b90600052602060002090600302016000915090508060010160009054906101000a900463ffffffff16908060020154905082565b60008090505b6003805490508110156104bc576101d3610589565b600382815481106101e057fe5b90600052602060002090600302016040518060600160405290816000820160068060200260405190810160405280929190826006801561025d576020028201916000905b82829054906101000a900461ffff1661ffff16815260200190600201906020826001010492830192600103820291508084116102245790505b505050505081526020016001820160009054906101000a900463ffffffff1663ffffffff1663ffffffff16815260200160028201548152505090506102a06105b6565b6002826020015163ffffffff16815481106102b757fe5b906000526020600020906002020160405180604001604052908160008201548152602001600182018054600181600116156101000203166002900480601f0160208091040260200160405190810160405280929190818152602001828054600181600116156101000203166002900480156103735780601f1061034857610100808354040283529160200191610373565b820191906000526020600020905b81548152906001019060200180831161035657829003601f168201915b505050505081525050905060008260400151905084826000015114156104895760008090505b836000015150600681101561048757600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16638ff6e349856000015183600681106103f657fe5b6020020151886040518363ffffffff1660e01b8152600401808361ffff1681526020018281526020019250505060206040518083038186803b15801561043b57600080fd5b505afa15801561044f573d6000803e3d6000fd5b505050506040513d602081101561046557600080fd5b8101908080519060200190929190505050820191508080600101915050610399565b505b806003858154811061049757fe5b90600052602060002090600302016002018190555050505080806001019150506101be565b5050565b600281815481106104cd57fe5b9060005260206000209060020201600091509050806000015490806001018054600181600116156101000203166002900480601f01602080910402602001604051908101604052809291908181526020018280546001816001161561010002031660029004801561057f5780601f106105545761010080835404028352916020019161057f565b820191906000526020600020905b81548152906001019060200180831161056257829003601f168201915b5050505050905082565b604051806060016040528061059c6105d0565b8152602001600063ffffffff168152602001600081525090565b604051806040016040528060008152602001606081525090565b6040518060c0016040528060069060208202803883398082019150509050509056fea265627a7a723158204e5b79b86b98463e5216ee59ab426101218b2ba736265380a7596457c0a9c3a464736f6c63430005100032",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106100415760003560e01c806322af00fa1461004657806381bbb7051461009b578063c648fefe146100c9575b600080fd5b6100726004803603602081101561005c57600080fd5b8101908080359060200190929190505050610177565b604051808363ffffffff1663ffffffff1681526020018281526020019250505060405180910390f35b6100c7600480360360208110156100b157600080fd5b81019080803590602001909291905050506101b8565b005b6100f5600480360360208110156100df57600080fd5b81019080803590602001909291905050506104c0565b6040518083815260200180602001828103825283818151815260200191508051906020019080838360005b8381101561013b578082015181840152602081019050610120565b50505050905090810190601f1680156101685780820380516001836020036101000a031916815260200191505b50935050505060405180910390f35b6003818154811061018457fe5b90600052602060002090600302016000915090508060010160009054906101000a900463ffffffff16908060020154905082565b60008090505b6003805490508110156104bc576101d3610589565b600382815481106101e057fe5b90600052602060002090600302016040518060600160405290816000820160068060200260405190810160405280929190826006801561025d576020028201916000905b82829054906101000a900461ffff1661ffff16815260200190600201906020826001010492830192600103820291508084116102245790505b505050505081526020016001820160009054906101000a900463ffffffff1663ffffffff1663ffffffff16815260200160028201548152505090506102a06105b6565b6002826020015163ffffffff16815481106102b757fe5b906000526020600020906002020160405180604001604052908160008201548152602001600182018054600181600116156101000203166002900480601f0160208091040260200160405190810160405280929190818152602001828054600181600116156101000203166002900480156103735780601f1061034857610100808354040283529160200191610373565b820191906000526020600020905b81548152906001019060200180831161035657829003601f168201915b505050505081525050905060008260400151905084826000015114156104895760008090505b836000015150600681101561048757600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16638ff6e349856000015183600681106103f657fe5b6020020151886040518363ffffffff1660e01b8152600401808361ffff1681526020018281526020019250505060206040518083038186803b15801561043b57600080fd5b505afa15801561044f573d6000803e3d6000fd5b505050506040513d602081101561046557600080fd5b8101908080519060200190929190505050820191508080600101915050610399565b505b806003858154811061049757fe5b90600052602060002090600302016002018190555050505080806001019150506101be565b5050565b600281815481106104cd57fe5b9060005260206000209060020201600091509050806000015490806001018054600181600116156101000203166002900480601f01602080910402602001604051908101604052809291908181526020018280546001816001161561010002031660029004801561057f5780601f106105545761010080835404028352916020019161057f565b820191906000526020600020905b81548152906001019060200180831161056257829003601f168201915b5050505050905082565b604051806060016040528061059c6105d0565b8152602001600063ffffffff168152602001600081525090565b604051806040016040528060008152602001606081525090565b6040518060c0016040528060069060208202803883398082019150509050509056fea265627a7a723158204e5b79b86b98463e5216ee59ab426101218b2ba736265380a7596457c0a9c3a464736f6c63430005100032",
+  "sourceMap": "231:1162:2:-;;;292:42;260:74;;;;;;;;;;;;;;;;;;;;401:21;;;;;;;;;;;344:79;;;;;;;;;;;;;;;;;;;;231:1162;8:9:-1;5:2;;;30:1;27;20:12;5:2;231:1162:2;;;;;;;",
+  "deployedSourceMap": "231:1162:2:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;231:1162:2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;659:17;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;659:17:2;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;687:548;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;687:548:2;;;;;;;;;;;;;;;;;:::i;:::-;;629:23;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;629:23:2;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;23:1:-1;8:100;33:3;30:1;27:10;8:100;;;99:1;94:3;90:11;84:18;80:1;75:3;71:11;64:39;52:2;49:1;45:10;40:15;;8:100;;;12:14;629:23:2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;659:17;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o;687:548::-;757:6;766:1;757:10;;752:472;774:4;:11;;;;770:1;:15;752:472;;;806:14;;:::i;:::-;823:4;828:1;823:7;;;;;;;;;;;;;;;;;;806:24;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;845:20;;:::i;:::-;868:7;876:3;:12;;;868:21;;;;;;;;;;;;;;;;;;;;845:44;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;904:9;916:3;:14;;;904:26;;971:13;948:6;:19;;;:36;945:225;;;1010:6;1019:1;1010:10;;1005:149;1026:3;:13;;;:20;;1022:1;:24;1005:149;;;1084:22;;;;;;;;;;;:37;;;1122:3;:13;;;1136:1;1122:16;;;;;;;;;;;1140:13;1084:70;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;1084:70:2;;;;8:9:-1;5:2;;;45:16;42:1;39;24:38;77:16;74:1;67:27;5:2;1084:70:2;;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;1084:70:2;;;;;;;;;;;;;;;;1075:79;;;;1048:3;;;;;;;1005:149;;;;945:225;1207:5;1186:4;1191:1;1186:7;;;;;;;;;;;;;;;;;;:18;;:26;;;;752:472;;;787:3;;;;;;;752:472;;;;687:548;:::o;629:23::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o;231:1162::-;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;:::o;:::-;;;;;;;;;;;;;;;;;;;:::o;:::-;;;;;;;;;;;29:2:-1;21:6;17:15;117:4;105:10;97:6;88:34;148:4;140:6;136:17;126:27;;0:157;231:1162:2;;;;:::o",
+  "source": "pragma solidity >=0.4.22 <0.6.0;\r\n\r\ncontract OracleInterface{\r\n    function getGolferScore(uint _golferID, uint _tournamentID) public view returns(int);\r\n    function getGolferCost(uint _golferID) public view returns (uint);\r\n}\r\n\r\ncontract LeagueData {\r\n\r\n    address golfDataOracleAddress = 0x5b0C9dC0AFE417858DcC8dB5269E47ABc572AA77 ;\r\n\r\n    OracleInterface golfDataOracleContract = OracleInterface(golfDataOracleAddress);\r\n\r\n\r\n    struct League{\r\n        uint tournamentID;\r\n        string leagueName;\r\n    }\r\n\r\n    struct Bet {\r\n        uint16[6] golferIDs;\r\n        uint32 leagueID;\r\n        int totalScore;\r\n    }\r\n\r\n\r\n    League[] public leagues;\r\n    Bet[] public bets;\r\n\r\n\r\n    function updateUserScores(uint _tournamentID) external{\r\n        for (uint i = 0 ; i < bets.length; i++){\r\n            Bet memory bet = bets[i];\r\n            League memory league = leagues[bet.leagueID];\r\n            int score = bet.totalScore;\r\n            if(league.tournamentID == _tournamentID ){\r\n                for (uint j = 0; j < bet.golferIDs.length; j++ )\r\n                    score += golfDataOracleContract.getGolferScore(bet.golferIDs[j], _tournamentID);\r\n            }\r\n\r\n            bets[i].totalScore = score;\r\n        }\r\n\r\n\r\n    }\r\n\r\n    function getGolferCostWei(uint _golferID) internal view returns(uint) {\r\n        return golfDataOracleContract.getGolferCost(_golferID);\r\n    }\r\n\r\n\r\n}\r\n",
+  "sourcePath": "S:\\GitHub\\blockchain-fantasy-golf\\contracts\\LeagueData.sol",
+  "ast": {
+    "absolutePath": "/S/GitHub/blockchain-fantasy-golf/contracts/LeagueData.sol",
+    "exportedSymbols": {
+      "LeagueData": [
+        343
+      ],
+      "OracleInterface": [
+        227
+      ]
+    },
+    "id": 344,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 210,
+        "literals": [
+          "solidity",
+          ">=",
+          "0.4",
+          ".22",
+          "<",
+          "0.6",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:32:2"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": false,
+        "id": 227,
+        "linearizedBaseContracts": [
+          227
+        ],
+        "name": "OracleInterface",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": null,
+            "documentation": null,
+            "id": 219,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getGolferScore",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 215,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 212,
+                  "name": "_golferID",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 219,
+                  "src": "91:14:2",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 211,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "91:4:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 214,
+                  "name": "_tournamentID",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 219,
+                  "src": "107:18:2",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 213,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "107:4:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "90:36:2"
+            },
+            "returnParameters": {
+              "id": 218,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 217,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 219,
+                  "src": "147:3:2",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_int256",
+                    "typeString": "int256"
+                  },
+                  "typeName": {
+                    "id": 216,
+                    "name": "int",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "147:3:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_int256",
+                      "typeString": "int256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "146:5:2"
+            },
+            "scope": 227,
+            "src": "67:85:2",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 226,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getGolferCost",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 222,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 221,
+                  "name": "_golferID",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 226,
+                  "src": "181:14:2",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 220,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "181:4:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "180:16:2"
+            },
+            "returnParameters": {
+              "id": 225,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 224,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 226,
+                  "src": "218:4:2",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 223,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "218:4:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "217:6:2"
+            },
+            "scope": 227,
+            "src": "158:66:2",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 344,
+        "src": "36:191:2"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 343,
+        "linearizedBaseContracts": [
+          343
+        ],
+        "name": "LeagueData",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": false,
+            "id": 230,
+            "name": "golfDataOracleAddress",
+            "nodeType": "VariableDeclaration",
+            "scope": 343,
+            "src": "260:74:2",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_address",
+              "typeString": "address"
+            },
+            "typeName": {
+              "id": 228,
+              "name": "address",
+              "nodeType": "ElementaryTypeName",
+              "src": "260:7:2",
+              "stateMutability": "nonpayable",
+              "typeDescriptions": {
+                "typeIdentifier": "t_address",
+                "typeString": "address"
+              }
+            },
+            "value": {
+              "argumentTypes": null,
+              "hexValue": "307835623043396443304146453431373835384463433864423532363945343741426335373241413737",
+              "id": 229,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "kind": "number",
+              "lValueRequested": false,
+              "nodeType": "Literal",
+              "src": "292:42:2",
+              "subdenomination": null,
+              "typeDescriptions": {
+                "typeIdentifier": "t_address_payable",
+                "typeString": "address payable"
+              },
+              "value": "0x5b0C9dC0AFE417858DcC8dB5269E47ABc572AA77"
+            },
+            "visibility": "internal"
+          },
+          {
+            "constant": false,
+            "id": 235,
+            "name": "golfDataOracleContract",
+            "nodeType": "VariableDeclaration",
+            "scope": 343,
+            "src": "344:79:2",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_contract$_OracleInterface_$227",
+              "typeString": "contract OracleInterface"
+            },
+            "typeName": {
+              "contractScope": null,
+              "id": 231,
+              "name": "OracleInterface",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 227,
+              "src": "344:15:2",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_OracleInterface_$227",
+                "typeString": "contract OracleInterface"
+              }
+            },
+            "value": {
+              "argumentTypes": null,
+              "arguments": [
+                {
+                  "argumentTypes": null,
+                  "id": 233,
+                  "name": "golfDataOracleAddress",
+                  "nodeType": "Identifier",
+                  "overloadedDeclarations": [],
+                  "referencedDeclaration": 230,
+                  "src": "401:21:2",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                }
+              ],
+              "expression": {
+                "argumentTypes": [
+                  {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                ],
+                "id": 232,
+                "name": "OracleInterface",
+                "nodeType": "Identifier",
+                "overloadedDeclarations": [],
+                "referencedDeclaration": 227,
+                "src": "385:15:2",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_type$_t_contract$_OracleInterface_$227_$",
+                  "typeString": "type(contract OracleInterface)"
+                }
+              },
+              "id": 234,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": false,
+              "kind": "typeConversion",
+              "lValueRequested": false,
+              "names": [],
+              "nodeType": "FunctionCall",
+              "src": "385:38:2",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_OracleInterface_$227",
+                "typeString": "contract OracleInterface"
+              }
+            },
+            "visibility": "internal"
+          },
+          {
+            "canonicalName": "LeagueData.League",
+            "id": 240,
+            "members": [
+              {
+                "constant": false,
+                "id": 237,
+                "name": "tournamentID",
+                "nodeType": "VariableDeclaration",
+                "scope": 240,
+                "src": "458:17:2",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 236,
+                  "name": "uint",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "458:4:2",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 239,
+                "name": "leagueName",
+                "nodeType": "VariableDeclaration",
+                "scope": 240,
+                "src": "486:17:2",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string"
+                },
+                "typeName": {
+                  "id": 238,
+                  "name": "string",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "486:6:2",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_storage_ptr",
+                    "typeString": "string"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "name": "League",
+            "nodeType": "StructDefinition",
+            "scope": 343,
+            "src": "434:77:2",
+            "visibility": "public"
+          },
+          {
+            "canonicalName": "LeagueData.Bet",
+            "id": 249,
+            "members": [
+              {
+                "constant": false,
+                "id": 244,
+                "name": "golferIDs",
+                "nodeType": "VariableDeclaration",
+                "scope": 249,
+                "src": "541:19:2",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_array$_t_uint16_$6_storage_ptr",
+                  "typeString": "uint16[6]"
+                },
+                "typeName": {
+                  "baseType": {
+                    "id": 241,
+                    "name": "uint16",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "541:6:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint16",
+                      "typeString": "uint16"
+                    }
+                  },
+                  "id": 243,
+                  "length": {
+                    "argumentTypes": null,
+                    "hexValue": "36",
+                    "id": 242,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": true,
+                    "kind": "number",
+                    "lValueRequested": false,
+                    "nodeType": "Literal",
+                    "src": "548:1:2",
+                    "subdenomination": null,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_rational_6_by_1",
+                      "typeString": "int_const 6"
+                    },
+                    "value": "6"
+                  },
+                  "nodeType": "ArrayTypeName",
+                  "src": "541:9:2",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_uint16_$6_storage_ptr",
+                    "typeString": "uint16[6]"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 246,
+                "name": "leagueID",
+                "nodeType": "VariableDeclaration",
+                "scope": 249,
+                "src": "571:15:2",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint32",
+                  "typeString": "uint32"
+                },
+                "typeName": {
+                  "id": 245,
+                  "name": "uint32",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "571:6:2",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint32",
+                    "typeString": "uint32"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 248,
+                "name": "totalScore",
+                "nodeType": "VariableDeclaration",
+                "scope": 249,
+                "src": "597:14:2",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_int256",
+                  "typeString": "int256"
+                },
+                "typeName": {
+                  "id": 247,
+                  "name": "int",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "597:3:2",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_int256",
+                    "typeString": "int256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "name": "Bet",
+            "nodeType": "StructDefinition",
+            "scope": 343,
+            "src": "519:100:2",
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "id": 252,
+            "name": "leagues",
+            "nodeType": "VariableDeclaration",
+            "scope": 343,
+            "src": "629:23:2",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_array$_t_struct$_League_$240_storage_$dyn_storage",
+              "typeString": "struct LeagueData.League[]"
+            },
+            "typeName": {
+              "baseType": {
+                "contractScope": null,
+                "id": 250,
+                "name": "League",
+                "nodeType": "UserDefinedTypeName",
+                "referencedDeclaration": 240,
+                "src": "629:6:2",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_struct$_League_$240_storage_ptr",
+                  "typeString": "struct LeagueData.League"
+                }
+              },
+              "id": 251,
+              "length": null,
+              "nodeType": "ArrayTypeName",
+              "src": "629:8:2",
+              "typeDescriptions": {
+                "typeIdentifier": "t_array$_t_struct$_League_$240_storage_$dyn_storage_ptr",
+                "typeString": "struct LeagueData.League[]"
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "id": 255,
+            "name": "bets",
+            "nodeType": "VariableDeclaration",
+            "scope": 343,
+            "src": "659:17:2",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_array$_t_struct$_Bet_$249_storage_$dyn_storage",
+              "typeString": "struct LeagueData.Bet[]"
+            },
+            "typeName": {
+              "baseType": {
+                "contractScope": null,
+                "id": 253,
+                "name": "Bet",
+                "nodeType": "UserDefinedTypeName",
+                "referencedDeclaration": 249,
+                "src": "659:3:2",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_struct$_Bet_$249_storage_ptr",
+                  "typeString": "struct LeagueData.Bet"
+                }
+              },
+              "id": 254,
+              "length": null,
+              "nodeType": "ArrayTypeName",
+              "src": "659:5:2",
+              "typeDescriptions": {
+                "typeIdentifier": "t_array$_t_struct$_Bet_$249_storage_$dyn_storage_ptr",
+                "typeString": "struct LeagueData.Bet[]"
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 328,
+              "nodeType": "Block",
+              "src": "741:494:2",
+              "statements": [
+                {
+                  "body": {
+                    "id": 326,
+                    "nodeType": "Block",
+                    "src": "791:433:2",
+                    "statements": [
+                      {
+                        "assignments": [
+                          272
+                        ],
+                        "declarations": [
+                          {
+                            "constant": false,
+                            "id": 272,
+                            "name": "bet",
+                            "nodeType": "VariableDeclaration",
+                            "scope": 326,
+                            "src": "806:14:2",
+                            "stateVariable": false,
+                            "storageLocation": "memory",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_struct$_Bet_$249_memory_ptr",
+                              "typeString": "struct LeagueData.Bet"
+                            },
+                            "typeName": {
+                              "contractScope": null,
+                              "id": 271,
+                              "name": "Bet",
+                              "nodeType": "UserDefinedTypeName",
+                              "referencedDeclaration": 249,
+                              "src": "806:3:2",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_struct$_Bet_$249_storage_ptr",
+                                "typeString": "struct LeagueData.Bet"
+                              }
+                            },
+                            "value": null,
+                            "visibility": "internal"
+                          }
+                        ],
+                        "id": 276,
+                        "initialValue": {
+                          "argumentTypes": null,
+                          "baseExpression": {
+                            "argumentTypes": null,
+                            "id": 273,
+                            "name": "bets",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 255,
+                            "src": "823:4:2",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_array$_t_struct$_Bet_$249_storage_$dyn_storage",
+                              "typeString": "struct LeagueData.Bet storage ref[] storage ref"
+                            }
+                          },
+                          "id": 275,
+                          "indexExpression": {
+                            "argumentTypes": null,
+                            "id": 274,
+                            "name": "i",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 261,
+                            "src": "828:1:2",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_uint256",
+                              "typeString": "uint256"
+                            }
+                          },
+                          "isConstant": false,
+                          "isLValue": true,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "nodeType": "IndexAccess",
+                          "src": "823:7:2",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_struct$_Bet_$249_storage",
+                            "typeString": "struct LeagueData.Bet storage ref"
+                          }
+                        },
+                        "nodeType": "VariableDeclarationStatement",
+                        "src": "806:24:2"
+                      },
+                      {
+                        "assignments": [
+                          278
+                        ],
+                        "declarations": [
+                          {
+                            "constant": false,
+                            "id": 278,
+                            "name": "league",
+                            "nodeType": "VariableDeclaration",
+                            "scope": 326,
+                            "src": "845:20:2",
+                            "stateVariable": false,
+                            "storageLocation": "memory",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_struct$_League_$240_memory_ptr",
+                              "typeString": "struct LeagueData.League"
+                            },
+                            "typeName": {
+                              "contractScope": null,
+                              "id": 277,
+                              "name": "League",
+                              "nodeType": "UserDefinedTypeName",
+                              "referencedDeclaration": 240,
+                              "src": "845:6:2",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_struct$_League_$240_storage_ptr",
+                                "typeString": "struct LeagueData.League"
+                              }
+                            },
+                            "value": null,
+                            "visibility": "internal"
+                          }
+                        ],
+                        "id": 283,
+                        "initialValue": {
+                          "argumentTypes": null,
+                          "baseExpression": {
+                            "argumentTypes": null,
+                            "id": 279,
+                            "name": "leagues",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 252,
+                            "src": "868:7:2",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_array$_t_struct$_League_$240_storage_$dyn_storage",
+                              "typeString": "struct LeagueData.League storage ref[] storage ref"
+                            }
+                          },
+                          "id": 282,
+                          "indexExpression": {
+                            "argumentTypes": null,
+                            "expression": {
+                              "argumentTypes": null,
+                              "id": 280,
+                              "name": "bet",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 272,
+                              "src": "876:3:2",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_struct$_Bet_$249_memory_ptr",
+                                "typeString": "struct LeagueData.Bet memory"
+                              }
+                            },
+                            "id": 281,
+                            "isConstant": false,
+                            "isLValue": true,
+                            "isPure": false,
+                            "lValueRequested": false,
+                            "memberName": "leagueID",
+                            "nodeType": "MemberAccess",
+                            "referencedDeclaration": 246,
+                            "src": "876:12:2",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_uint32",
+                              "typeString": "uint32"
+                            }
+                          },
+                          "isConstant": false,
+                          "isLValue": true,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "nodeType": "IndexAccess",
+                          "src": "868:21:2",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_struct$_League_$240_storage",
+                            "typeString": "struct LeagueData.League storage ref"
+                          }
+                        },
+                        "nodeType": "VariableDeclarationStatement",
+                        "src": "845:44:2"
+                      },
+                      {
+                        "assignments": [
+                          285
+                        ],
+                        "declarations": [
+                          {
+                            "constant": false,
+                            "id": 285,
+                            "name": "score",
+                            "nodeType": "VariableDeclaration",
+                            "scope": 326,
+                            "src": "904:9:2",
+                            "stateVariable": false,
+                            "storageLocation": "default",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_int256",
+                              "typeString": "int256"
+                            },
+                            "typeName": {
+                              "id": 284,
+                              "name": "int",
+                              "nodeType": "ElementaryTypeName",
+                              "src": "904:3:2",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_int256",
+                                "typeString": "int256"
+                              }
+                            },
+                            "value": null,
+                            "visibility": "internal"
+                          }
+                        ],
+                        "id": 288,
+                        "initialValue": {
+                          "argumentTypes": null,
+                          "expression": {
+                            "argumentTypes": null,
+                            "id": 286,
+                            "name": "bet",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 272,
+                            "src": "916:3:2",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_struct$_Bet_$249_memory_ptr",
+                              "typeString": "struct LeagueData.Bet memory"
+                            }
+                          },
+                          "id": 287,
+                          "isConstant": false,
+                          "isLValue": true,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "totalScore",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": 248,
+                          "src": "916:14:2",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_int256",
+                            "typeString": "int256"
+                          }
+                        },
+                        "nodeType": "VariableDeclarationStatement",
+                        "src": "904:26:2"
+                      },
+                      {
+                        "condition": {
+                          "argumentTypes": null,
+                          "commonType": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          },
+                          "id": 292,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "leftExpression": {
+                            "argumentTypes": null,
+                            "expression": {
+                              "argumentTypes": null,
+                              "id": 289,
+                              "name": "league",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 278,
+                              "src": "948:6:2",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_struct$_League_$240_memory_ptr",
+                                "typeString": "struct LeagueData.League memory"
+                              }
+                            },
+                            "id": 290,
+                            "isConstant": false,
+                            "isLValue": true,
+                            "isPure": false,
+                            "lValueRequested": false,
+                            "memberName": "tournamentID",
+                            "nodeType": "MemberAccess",
+                            "referencedDeclaration": 237,
+                            "src": "948:19:2",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_uint256",
+                              "typeString": "uint256"
+                            }
+                          },
+                          "nodeType": "BinaryOperation",
+                          "operator": "==",
+                          "rightExpression": {
+                            "argumentTypes": null,
+                            "id": 291,
+                            "name": "_tournamentID",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 257,
+                            "src": "971:13:2",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_uint256",
+                              "typeString": "uint256"
+                            }
+                          },
+                          "src": "948:36:2",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_bool",
+                            "typeString": "bool"
+                          }
+                        },
+                        "falseBody": null,
+                        "id": 318,
+                        "nodeType": "IfStatement",
+                        "src": "945:225:2",
+                        "trueBody": {
+                          "id": 317,
+                          "nodeType": "Block",
+                          "src": "986:184:2",
+                          "statements": [
+                            {
+                              "body": {
+                                "expression": {
+                                  "argumentTypes": null,
+                                  "id": 314,
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "lValueRequested": false,
+                                  "leftHandSide": {
+                                    "argumentTypes": null,
+                                    "id": 305,
+                                    "name": "score",
+                                    "nodeType": "Identifier",
+                                    "overloadedDeclarations": [],
+                                    "referencedDeclaration": 285,
+                                    "src": "1075:5:2",
+                                    "typeDescriptions": {
+                                      "typeIdentifier": "t_int256",
+                                      "typeString": "int256"
+                                    }
+                                  },
+                                  "nodeType": "Assignment",
+                                  "operator": "+=",
+                                  "rightHandSide": {
+                                    "argumentTypes": null,
+                                    "arguments": [
+                                      {
+                                        "argumentTypes": null,
+                                        "baseExpression": {
+                                          "argumentTypes": null,
+                                          "expression": {
+                                            "argumentTypes": null,
+                                            "id": 308,
+                                            "name": "bet",
+                                            "nodeType": "Identifier",
+                                            "overloadedDeclarations": [],
+                                            "referencedDeclaration": 272,
+                                            "src": "1122:3:2",
+                                            "typeDescriptions": {
+                                              "typeIdentifier": "t_struct$_Bet_$249_memory_ptr",
+                                              "typeString": "struct LeagueData.Bet memory"
+                                            }
+                                          },
+                                          "id": 309,
+                                          "isConstant": false,
+                                          "isLValue": true,
+                                          "isPure": false,
+                                          "lValueRequested": false,
+                                          "memberName": "golferIDs",
+                                          "nodeType": "MemberAccess",
+                                          "referencedDeclaration": 244,
+                                          "src": "1122:13:2",
+                                          "typeDescriptions": {
+                                            "typeIdentifier": "t_array$_t_uint16_$6_memory",
+                                            "typeString": "uint16[6] memory"
+                                          }
+                                        },
+                                        "id": 311,
+                                        "indexExpression": {
+                                          "argumentTypes": null,
+                                          "id": 310,
+                                          "name": "j",
+                                          "nodeType": "Identifier",
+                                          "overloadedDeclarations": [],
+                                          "referencedDeclaration": 294,
+                                          "src": "1136:1:2",
+                                          "typeDescriptions": {
+                                            "typeIdentifier": "t_uint256",
+                                            "typeString": "uint256"
+                                          }
+                                        },
+                                        "isConstant": false,
+                                        "isLValue": true,
+                                        "isPure": false,
+                                        "lValueRequested": false,
+                                        "nodeType": "IndexAccess",
+                                        "src": "1122:16:2",
+                                        "typeDescriptions": {
+                                          "typeIdentifier": "t_uint16",
+                                          "typeString": "uint16"
+                                        }
+                                      },
+                                      {
+                                        "argumentTypes": null,
+                                        "id": 312,
+                                        "name": "_tournamentID",
+                                        "nodeType": "Identifier",
+                                        "overloadedDeclarations": [],
+                                        "referencedDeclaration": 257,
+                                        "src": "1140:13:2",
+                                        "typeDescriptions": {
+                                          "typeIdentifier": "t_uint256",
+                                          "typeString": "uint256"
+                                        }
+                                      }
+                                    ],
+                                    "expression": {
+                                      "argumentTypes": [
+                                        {
+                                          "typeIdentifier": "t_uint16",
+                                          "typeString": "uint16"
+                                        },
+                                        {
+                                          "typeIdentifier": "t_uint256",
+                                          "typeString": "uint256"
+                                        }
+                                      ],
+                                      "expression": {
+                                        "argumentTypes": null,
+                                        "id": 306,
+                                        "name": "golfDataOracleContract",
+                                        "nodeType": "Identifier",
+                                        "overloadedDeclarations": [],
+                                        "referencedDeclaration": 235,
+                                        "src": "1084:22:2",
+                                        "typeDescriptions": {
+                                          "typeIdentifier": "t_contract$_OracleInterface_$227",
+                                          "typeString": "contract OracleInterface"
+                                        }
+                                      },
+                                      "id": 307,
+                                      "isConstant": false,
+                                      "isLValue": false,
+                                      "isPure": false,
+                                      "lValueRequested": false,
+                                      "memberName": "getGolferScore",
+                                      "nodeType": "MemberAccess",
+                                      "referencedDeclaration": 219,
+                                      "src": "1084:37:2",
+                                      "typeDescriptions": {
+                                        "typeIdentifier": "t_function_external_view$_t_uint256_$_t_uint256_$returns$_t_int256_$",
+                                        "typeString": "function (uint256,uint256) view external returns (int256)"
+                                      }
+                                    },
+                                    "id": 313,
+                                    "isConstant": false,
+                                    "isLValue": false,
+                                    "isPure": false,
+                                    "kind": "functionCall",
+                                    "lValueRequested": false,
+                                    "names": [],
+                                    "nodeType": "FunctionCall",
+                                    "src": "1084:70:2",
+                                    "typeDescriptions": {
+                                      "typeIdentifier": "t_int256",
+                                      "typeString": "int256"
+                                    }
+                                  },
+                                  "src": "1075:79:2",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_int256",
+                                    "typeString": "int256"
+                                  }
+                                },
+                                "id": 315,
+                                "nodeType": "ExpressionStatement",
+                                "src": "1075:79:2"
+                              },
+                              "condition": {
+                                "argumentTypes": null,
+                                "commonType": {
+                                  "typeIdentifier": "t_uint256",
+                                  "typeString": "uint256"
+                                },
+                                "id": 301,
+                                "isConstant": false,
+                                "isLValue": false,
+                                "isPure": false,
+                                "lValueRequested": false,
+                                "leftExpression": {
+                                  "argumentTypes": null,
+                                  "id": 297,
+                                  "name": "j",
+                                  "nodeType": "Identifier",
+                                  "overloadedDeclarations": [],
+                                  "referencedDeclaration": 294,
+                                  "src": "1022:1:2",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_uint256",
+                                    "typeString": "uint256"
+                                  }
+                                },
+                                "nodeType": "BinaryOperation",
+                                "operator": "<",
+                                "rightExpression": {
+                                  "argumentTypes": null,
+                                  "expression": {
+                                    "argumentTypes": null,
+                                    "expression": {
+                                      "argumentTypes": null,
+                                      "id": 298,
+                                      "name": "bet",
+                                      "nodeType": "Identifier",
+                                      "overloadedDeclarations": [],
+                                      "referencedDeclaration": 272,
+                                      "src": "1026:3:2",
+                                      "typeDescriptions": {
+                                        "typeIdentifier": "t_struct$_Bet_$249_memory_ptr",
+                                        "typeString": "struct LeagueData.Bet memory"
+                                      }
+                                    },
+                                    "id": 299,
+                                    "isConstant": false,
+                                    "isLValue": true,
+                                    "isPure": false,
+                                    "lValueRequested": false,
+                                    "memberName": "golferIDs",
+                                    "nodeType": "MemberAccess",
+                                    "referencedDeclaration": 244,
+                                    "src": "1026:13:2",
+                                    "typeDescriptions": {
+                                      "typeIdentifier": "t_array$_t_uint16_$6_memory",
+                                      "typeString": "uint16[6] memory"
+                                    }
+                                  },
+                                  "id": 300,
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "lValueRequested": false,
+                                  "memberName": "length",
+                                  "nodeType": "MemberAccess",
+                                  "referencedDeclaration": null,
+                                  "src": "1026:20:2",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_uint256",
+                                    "typeString": "uint256"
+                                  }
+                                },
+                                "src": "1022:24:2",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_bool",
+                                  "typeString": "bool"
+                                }
+                              },
+                              "id": 316,
+                              "initializationExpression": {
+                                "assignments": [
+                                  294
+                                ],
+                                "declarations": [
+                                  {
+                                    "constant": false,
+                                    "id": 294,
+                                    "name": "j",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 316,
+                                    "src": "1010:6:2",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                      "typeIdentifier": "t_uint256",
+                                      "typeString": "uint256"
+                                    },
+                                    "typeName": {
+                                      "id": 293,
+                                      "name": "uint",
+                                      "nodeType": "ElementaryTypeName",
+                                      "src": "1010:4:2",
+                                      "typeDescriptions": {
+                                        "typeIdentifier": "t_uint256",
+                                        "typeString": "uint256"
+                                      }
+                                    },
+                                    "value": null,
+                                    "visibility": "internal"
+                                  }
+                                ],
+                                "id": 296,
+                                "initialValue": {
+                                  "argumentTypes": null,
+                                  "hexValue": "30",
+                                  "id": 295,
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": true,
+                                  "kind": "number",
+                                  "lValueRequested": false,
+                                  "nodeType": "Literal",
+                                  "src": "1019:1:2",
+                                  "subdenomination": null,
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_rational_0_by_1",
+                                    "typeString": "int_const 0"
+                                  },
+                                  "value": "0"
+                                },
+                                "nodeType": "VariableDeclarationStatement",
+                                "src": "1010:10:2"
+                              },
+                              "loopExpression": {
+                                "expression": {
+                                  "argumentTypes": null,
+                                  "id": 303,
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "lValueRequested": false,
+                                  "nodeType": "UnaryOperation",
+                                  "operator": "++",
+                                  "prefix": false,
+                                  "src": "1048:3:2",
+                                  "subExpression": {
+                                    "argumentTypes": null,
+                                    "id": 302,
+                                    "name": "j",
+                                    "nodeType": "Identifier",
+                                    "overloadedDeclarations": [],
+                                    "referencedDeclaration": 294,
+                                    "src": "1048:1:2",
+                                    "typeDescriptions": {
+                                      "typeIdentifier": "t_uint256",
+                                      "typeString": "uint256"
+                                    }
+                                  },
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_uint256",
+                                    "typeString": "uint256"
+                                  }
+                                },
+                                "id": 304,
+                                "nodeType": "ExpressionStatement",
+                                "src": "1048:3:2"
+                              },
+                              "nodeType": "ForStatement",
+                              "src": "1005:149:2"
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 324,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "leftHandSide": {
+                            "argumentTypes": null,
+                            "expression": {
+                              "argumentTypes": null,
+                              "baseExpression": {
+                                "argumentTypes": null,
+                                "id": 319,
+                                "name": "bets",
+                                "nodeType": "Identifier",
+                                "overloadedDeclarations": [],
+                                "referencedDeclaration": 255,
+                                "src": "1186:4:2",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_array$_t_struct$_Bet_$249_storage_$dyn_storage",
+                                  "typeString": "struct LeagueData.Bet storage ref[] storage ref"
+                                }
+                              },
+                              "id": 321,
+                              "indexExpression": {
+                                "argumentTypes": null,
+                                "id": 320,
+                                "name": "i",
+                                "nodeType": "Identifier",
+                                "overloadedDeclarations": [],
+                                "referencedDeclaration": 261,
+                                "src": "1191:1:2",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_uint256",
+                                  "typeString": "uint256"
+                                }
+                              },
+                              "isConstant": false,
+                              "isLValue": true,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "nodeType": "IndexAccess",
+                              "src": "1186:7:2",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_struct$_Bet_$249_storage",
+                                "typeString": "struct LeagueData.Bet storage ref"
+                              }
+                            },
+                            "id": 322,
+                            "isConstant": false,
+                            "isLValue": true,
+                            "isPure": false,
+                            "lValueRequested": true,
+                            "memberName": "totalScore",
+                            "nodeType": "MemberAccess",
+                            "referencedDeclaration": 248,
+                            "src": "1186:18:2",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_int256",
+                              "typeString": "int256"
+                            }
+                          },
+                          "nodeType": "Assignment",
+                          "operator": "=",
+                          "rightHandSide": {
+                            "argumentTypes": null,
+                            "id": 323,
+                            "name": "score",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 285,
+                            "src": "1207:5:2",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_int256",
+                              "typeString": "int256"
+                            }
+                          },
+                          "src": "1186:26:2",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_int256",
+                            "typeString": "int256"
+                          }
+                        },
+                        "id": 325,
+                        "nodeType": "ExpressionStatement",
+                        "src": "1186:26:2"
+                      }
+                    ]
+                  },
+                  "condition": {
+                    "argumentTypes": null,
+                    "commonType": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    },
+                    "id": 267,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftExpression": {
+                      "argumentTypes": null,
+                      "id": 264,
+                      "name": "i",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 261,
+                      "src": "770:1:2",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "nodeType": "BinaryOperation",
+                    "operator": "<",
+                    "rightExpression": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 265,
+                        "name": "bets",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 255,
+                        "src": "774:4:2",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_array$_t_struct$_Bet_$249_storage_$dyn_storage",
+                          "typeString": "struct LeagueData.Bet storage ref[] storage ref"
+                        }
+                      },
+                      "id": 266,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "length",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": null,
+                      "src": "774:11:2",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "src": "770:15:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "id": 327,
+                  "initializationExpression": {
+                    "assignments": [
+                      261
+                    ],
+                    "declarations": [
+                      {
+                        "constant": false,
+                        "id": 261,
+                        "name": "i",
+                        "nodeType": "VariableDeclaration",
+                        "scope": 327,
+                        "src": "757:6:2",
+                        "stateVariable": false,
+                        "storageLocation": "default",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        },
+                        "typeName": {
+                          "id": 260,
+                          "name": "uint",
+                          "nodeType": "ElementaryTypeName",
+                          "src": "757:4:2",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        "value": null,
+                        "visibility": "internal"
+                      }
+                    ],
+                    "id": 263,
+                    "initialValue": {
+                      "argumentTypes": null,
+                      "hexValue": "30",
+                      "id": 262,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "kind": "number",
+                      "lValueRequested": false,
+                      "nodeType": "Literal",
+                      "src": "766:1:2",
+                      "subdenomination": null,
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_rational_0_by_1",
+                        "typeString": "int_const 0"
+                      },
+                      "value": "0"
+                    },
+                    "nodeType": "VariableDeclarationStatement",
+                    "src": "757:10:2"
+                  },
+                  "loopExpression": {
+                    "expression": {
+                      "argumentTypes": null,
+                      "id": 269,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "nodeType": "UnaryOperation",
+                      "operator": "++",
+                      "prefix": false,
+                      "src": "787:3:2",
+                      "subExpression": {
+                        "argumentTypes": null,
+                        "id": 268,
+                        "name": "i",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 261,
+                        "src": "787:1:2",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "id": 270,
+                    "nodeType": "ExpressionStatement",
+                    "src": "787:3:2"
+                  },
+                  "nodeType": "ForStatement",
+                  "src": "752:472:2"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 329,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "updateUserScores",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 258,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 257,
+                  "name": "_tournamentID",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 329,
+                  "src": "713:18:2",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 256,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "713:4:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "712:20:2"
+            },
+            "returnParameters": {
+              "id": 259,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "741:0:2"
+            },
+            "scope": 343,
+            "src": "687:548:2",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": {
+              "id": 341,
+              "nodeType": "Block",
+              "src": "1313:73:2",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 338,
+                        "name": "_golferID",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 331,
+                        "src": "1368:9:2",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 336,
+                        "name": "golfDataOracleContract",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 235,
+                        "src": "1331:22:2",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_OracleInterface_$227",
+                          "typeString": "contract OracleInterface"
+                        }
+                      },
+                      "id": 337,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "getGolferCost",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 226,
+                      "src": "1331:36:2",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_external_view$_t_uint256_$returns$_t_uint256_$",
+                        "typeString": "function (uint256) view external returns (uint256)"
+                      }
+                    },
+                    "id": 339,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1331:47:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "functionReturnParameters": 335,
+                  "id": 340,
+                  "nodeType": "Return",
+                  "src": "1324:54:2"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 342,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getGolferCostWei",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 332,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 331,
+                  "name": "_golferID",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 342,
+                  "src": "1269:14:2",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 330,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1269:4:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1268:16:2"
+            },
+            "returnParameters": {
+              "id": 335,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 334,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 342,
+                  "src": "1307:4:2",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 333,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1307:4:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1306:6:2"
+            },
+            "scope": 343,
+            "src": "1243:143:2",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "internal"
+          }
+        ],
+        "scope": 344,
+        "src": "231:1162:2"
+      }
+    ],
+    "src": "0:1395:2"
+  },
+  "legacyAST": {
+    "absolutePath": "/S/GitHub/blockchain-fantasy-golf/contracts/LeagueData.sol",
+    "exportedSymbols": {
+      "LeagueData": [
+        343
+      ],
+      "OracleInterface": [
+        227
+      ]
+    },
+    "id": 344,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 210,
+        "literals": [
+          "solidity",
+          ">=",
+          "0.4",
+          ".22",
+          "<",
+          "0.6",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:32:2"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": false,
+        "id": 227,
+        "linearizedBaseContracts": [
+          227
+        ],
+        "name": "OracleInterface",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": null,
+            "documentation": null,
+            "id": 219,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getGolferScore",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 215,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 212,
+                  "name": "_golferID",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 219,
+                  "src": "91:14:2",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 211,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "91:4:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 214,
+                  "name": "_tournamentID",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 219,
+                  "src": "107:18:2",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 213,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "107:4:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "90:36:2"
+            },
+            "returnParameters": {
+              "id": 218,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 217,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 219,
+                  "src": "147:3:2",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_int256",
+                    "typeString": "int256"
+                  },
+                  "typeName": {
+                    "id": 216,
+                    "name": "int",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "147:3:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_int256",
+                      "typeString": "int256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "146:5:2"
+            },
+            "scope": 227,
+            "src": "67:85:2",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 226,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getGolferCost",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 222,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 221,
+                  "name": "_golferID",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 226,
+                  "src": "181:14:2",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 220,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "181:4:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "180:16:2"
+            },
+            "returnParameters": {
+              "id": 225,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 224,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 226,
+                  "src": "218:4:2",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 223,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "218:4:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "217:6:2"
+            },
+            "scope": 227,
+            "src": "158:66:2",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 344,
+        "src": "36:191:2"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 343,
+        "linearizedBaseContracts": [
+          343
+        ],
+        "name": "LeagueData",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": false,
+            "id": 230,
+            "name": "golfDataOracleAddress",
+            "nodeType": "VariableDeclaration",
+            "scope": 343,
+            "src": "260:74:2",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_address",
+              "typeString": "address"
+            },
+            "typeName": {
+              "id": 228,
+              "name": "address",
+              "nodeType": "ElementaryTypeName",
+              "src": "260:7:2",
+              "stateMutability": "nonpayable",
+              "typeDescriptions": {
+                "typeIdentifier": "t_address",
+                "typeString": "address"
+              }
+            },
+            "value": {
+              "argumentTypes": null,
+              "hexValue": "307835623043396443304146453431373835384463433864423532363945343741426335373241413737",
+              "id": 229,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "kind": "number",
+              "lValueRequested": false,
+              "nodeType": "Literal",
+              "src": "292:42:2",
+              "subdenomination": null,
+              "typeDescriptions": {
+                "typeIdentifier": "t_address_payable",
+                "typeString": "address payable"
+              },
+              "value": "0x5b0C9dC0AFE417858DcC8dB5269E47ABc572AA77"
+            },
+            "visibility": "internal"
+          },
+          {
+            "constant": false,
+            "id": 235,
+            "name": "golfDataOracleContract",
+            "nodeType": "VariableDeclaration",
+            "scope": 343,
+            "src": "344:79:2",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_contract$_OracleInterface_$227",
+              "typeString": "contract OracleInterface"
+            },
+            "typeName": {
+              "contractScope": null,
+              "id": 231,
+              "name": "OracleInterface",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 227,
+              "src": "344:15:2",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_OracleInterface_$227",
+                "typeString": "contract OracleInterface"
+              }
+            },
+            "value": {
+              "argumentTypes": null,
+              "arguments": [
+                {
+                  "argumentTypes": null,
+                  "id": 233,
+                  "name": "golfDataOracleAddress",
+                  "nodeType": "Identifier",
+                  "overloadedDeclarations": [],
+                  "referencedDeclaration": 230,
+                  "src": "401:21:2",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                }
+              ],
+              "expression": {
+                "argumentTypes": [
+                  {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                ],
+                "id": 232,
+                "name": "OracleInterface",
+                "nodeType": "Identifier",
+                "overloadedDeclarations": [],
+                "referencedDeclaration": 227,
+                "src": "385:15:2",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_type$_t_contract$_OracleInterface_$227_$",
+                  "typeString": "type(contract OracleInterface)"
+                }
+              },
+              "id": 234,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": false,
+              "kind": "typeConversion",
+              "lValueRequested": false,
+              "names": [],
+              "nodeType": "FunctionCall",
+              "src": "385:38:2",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_OracleInterface_$227",
+                "typeString": "contract OracleInterface"
+              }
+            },
+            "visibility": "internal"
+          },
+          {
+            "canonicalName": "LeagueData.League",
+            "id": 240,
+            "members": [
+              {
+                "constant": false,
+                "id": 237,
+                "name": "tournamentID",
+                "nodeType": "VariableDeclaration",
+                "scope": 240,
+                "src": "458:17:2",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 236,
+                  "name": "uint",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "458:4:2",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 239,
+                "name": "leagueName",
+                "nodeType": "VariableDeclaration",
+                "scope": 240,
+                "src": "486:17:2",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string"
+                },
+                "typeName": {
+                  "id": 238,
+                  "name": "string",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "486:6:2",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_storage_ptr",
+                    "typeString": "string"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "name": "League",
+            "nodeType": "StructDefinition",
+            "scope": 343,
+            "src": "434:77:2",
+            "visibility": "public"
+          },
+          {
+            "canonicalName": "LeagueData.Bet",
+            "id": 249,
+            "members": [
+              {
+                "constant": false,
+                "id": 244,
+                "name": "golferIDs",
+                "nodeType": "VariableDeclaration",
+                "scope": 249,
+                "src": "541:19:2",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_array$_t_uint16_$6_storage_ptr",
+                  "typeString": "uint16[6]"
+                },
+                "typeName": {
+                  "baseType": {
+                    "id": 241,
+                    "name": "uint16",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "541:6:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint16",
+                      "typeString": "uint16"
+                    }
+                  },
+                  "id": 243,
+                  "length": {
+                    "argumentTypes": null,
+                    "hexValue": "36",
+                    "id": 242,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": true,
+                    "kind": "number",
+                    "lValueRequested": false,
+                    "nodeType": "Literal",
+                    "src": "548:1:2",
+                    "subdenomination": null,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_rational_6_by_1",
+                      "typeString": "int_const 6"
+                    },
+                    "value": "6"
+                  },
+                  "nodeType": "ArrayTypeName",
+                  "src": "541:9:2",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_uint16_$6_storage_ptr",
+                    "typeString": "uint16[6]"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 246,
+                "name": "leagueID",
+                "nodeType": "VariableDeclaration",
+                "scope": 249,
+                "src": "571:15:2",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint32",
+                  "typeString": "uint32"
+                },
+                "typeName": {
+                  "id": 245,
+                  "name": "uint32",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "571:6:2",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint32",
+                    "typeString": "uint32"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 248,
+                "name": "totalScore",
+                "nodeType": "VariableDeclaration",
+                "scope": 249,
+                "src": "597:14:2",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_int256",
+                  "typeString": "int256"
+                },
+                "typeName": {
+                  "id": 247,
+                  "name": "int",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "597:3:2",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_int256",
+                    "typeString": "int256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "name": "Bet",
+            "nodeType": "StructDefinition",
+            "scope": 343,
+            "src": "519:100:2",
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "id": 252,
+            "name": "leagues",
+            "nodeType": "VariableDeclaration",
+            "scope": 343,
+            "src": "629:23:2",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_array$_t_struct$_League_$240_storage_$dyn_storage",
+              "typeString": "struct LeagueData.League[]"
+            },
+            "typeName": {
+              "baseType": {
+                "contractScope": null,
+                "id": 250,
+                "name": "League",
+                "nodeType": "UserDefinedTypeName",
+                "referencedDeclaration": 240,
+                "src": "629:6:2",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_struct$_League_$240_storage_ptr",
+                  "typeString": "struct LeagueData.League"
+                }
+              },
+              "id": 251,
+              "length": null,
+              "nodeType": "ArrayTypeName",
+              "src": "629:8:2",
+              "typeDescriptions": {
+                "typeIdentifier": "t_array$_t_struct$_League_$240_storage_$dyn_storage_ptr",
+                "typeString": "struct LeagueData.League[]"
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "id": 255,
+            "name": "bets",
+            "nodeType": "VariableDeclaration",
+            "scope": 343,
+            "src": "659:17:2",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_array$_t_struct$_Bet_$249_storage_$dyn_storage",
+              "typeString": "struct LeagueData.Bet[]"
+            },
+            "typeName": {
+              "baseType": {
+                "contractScope": null,
+                "id": 253,
+                "name": "Bet",
+                "nodeType": "UserDefinedTypeName",
+                "referencedDeclaration": 249,
+                "src": "659:3:2",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_struct$_Bet_$249_storage_ptr",
+                  "typeString": "struct LeagueData.Bet"
+                }
+              },
+              "id": 254,
+              "length": null,
+              "nodeType": "ArrayTypeName",
+              "src": "659:5:2",
+              "typeDescriptions": {
+                "typeIdentifier": "t_array$_t_struct$_Bet_$249_storage_$dyn_storage_ptr",
+                "typeString": "struct LeagueData.Bet[]"
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 328,
+              "nodeType": "Block",
+              "src": "741:494:2",
+              "statements": [
+                {
+                  "body": {
+                    "id": 326,
+                    "nodeType": "Block",
+                    "src": "791:433:2",
+                    "statements": [
+                      {
+                        "assignments": [
+                          272
+                        ],
+                        "declarations": [
+                          {
+                            "constant": false,
+                            "id": 272,
+                            "name": "bet",
+                            "nodeType": "VariableDeclaration",
+                            "scope": 326,
+                            "src": "806:14:2",
+                            "stateVariable": false,
+                            "storageLocation": "memory",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_struct$_Bet_$249_memory_ptr",
+                              "typeString": "struct LeagueData.Bet"
+                            },
+                            "typeName": {
+                              "contractScope": null,
+                              "id": 271,
+                              "name": "Bet",
+                              "nodeType": "UserDefinedTypeName",
+                              "referencedDeclaration": 249,
+                              "src": "806:3:2",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_struct$_Bet_$249_storage_ptr",
+                                "typeString": "struct LeagueData.Bet"
+                              }
+                            },
+                            "value": null,
+                            "visibility": "internal"
+                          }
+                        ],
+                        "id": 276,
+                        "initialValue": {
+                          "argumentTypes": null,
+                          "baseExpression": {
+                            "argumentTypes": null,
+                            "id": 273,
+                            "name": "bets",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 255,
+                            "src": "823:4:2",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_array$_t_struct$_Bet_$249_storage_$dyn_storage",
+                              "typeString": "struct LeagueData.Bet storage ref[] storage ref"
+                            }
+                          },
+                          "id": 275,
+                          "indexExpression": {
+                            "argumentTypes": null,
+                            "id": 274,
+                            "name": "i",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 261,
+                            "src": "828:1:2",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_uint256",
+                              "typeString": "uint256"
+                            }
+                          },
+                          "isConstant": false,
+                          "isLValue": true,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "nodeType": "IndexAccess",
+                          "src": "823:7:2",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_struct$_Bet_$249_storage",
+                            "typeString": "struct LeagueData.Bet storage ref"
+                          }
+                        },
+                        "nodeType": "VariableDeclarationStatement",
+                        "src": "806:24:2"
+                      },
+                      {
+                        "assignments": [
+                          278
+                        ],
+                        "declarations": [
+                          {
+                            "constant": false,
+                            "id": 278,
+                            "name": "league",
+                            "nodeType": "VariableDeclaration",
+                            "scope": 326,
+                            "src": "845:20:2",
+                            "stateVariable": false,
+                            "storageLocation": "memory",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_struct$_League_$240_memory_ptr",
+                              "typeString": "struct LeagueData.League"
+                            },
+                            "typeName": {
+                              "contractScope": null,
+                              "id": 277,
+                              "name": "League",
+                              "nodeType": "UserDefinedTypeName",
+                              "referencedDeclaration": 240,
+                              "src": "845:6:2",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_struct$_League_$240_storage_ptr",
+                                "typeString": "struct LeagueData.League"
+                              }
+                            },
+                            "value": null,
+                            "visibility": "internal"
+                          }
+                        ],
+                        "id": 283,
+                        "initialValue": {
+                          "argumentTypes": null,
+                          "baseExpression": {
+                            "argumentTypes": null,
+                            "id": 279,
+                            "name": "leagues",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 252,
+                            "src": "868:7:2",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_array$_t_struct$_League_$240_storage_$dyn_storage",
+                              "typeString": "struct LeagueData.League storage ref[] storage ref"
+                            }
+                          },
+                          "id": 282,
+                          "indexExpression": {
+                            "argumentTypes": null,
+                            "expression": {
+                              "argumentTypes": null,
+                              "id": 280,
+                              "name": "bet",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 272,
+                              "src": "876:3:2",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_struct$_Bet_$249_memory_ptr",
+                                "typeString": "struct LeagueData.Bet memory"
+                              }
+                            },
+                            "id": 281,
+                            "isConstant": false,
+                            "isLValue": true,
+                            "isPure": false,
+                            "lValueRequested": false,
+                            "memberName": "leagueID",
+                            "nodeType": "MemberAccess",
+                            "referencedDeclaration": 246,
+                            "src": "876:12:2",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_uint32",
+                              "typeString": "uint32"
+                            }
+                          },
+                          "isConstant": false,
+                          "isLValue": true,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "nodeType": "IndexAccess",
+                          "src": "868:21:2",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_struct$_League_$240_storage",
+                            "typeString": "struct LeagueData.League storage ref"
+                          }
+                        },
+                        "nodeType": "VariableDeclarationStatement",
+                        "src": "845:44:2"
+                      },
+                      {
+                        "assignments": [
+                          285
+                        ],
+                        "declarations": [
+                          {
+                            "constant": false,
+                            "id": 285,
+                            "name": "score",
+                            "nodeType": "VariableDeclaration",
+                            "scope": 326,
+                            "src": "904:9:2",
+                            "stateVariable": false,
+                            "storageLocation": "default",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_int256",
+                              "typeString": "int256"
+                            },
+                            "typeName": {
+                              "id": 284,
+                              "name": "int",
+                              "nodeType": "ElementaryTypeName",
+                              "src": "904:3:2",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_int256",
+                                "typeString": "int256"
+                              }
+                            },
+                            "value": null,
+                            "visibility": "internal"
+                          }
+                        ],
+                        "id": 288,
+                        "initialValue": {
+                          "argumentTypes": null,
+                          "expression": {
+                            "argumentTypes": null,
+                            "id": 286,
+                            "name": "bet",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 272,
+                            "src": "916:3:2",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_struct$_Bet_$249_memory_ptr",
+                              "typeString": "struct LeagueData.Bet memory"
+                            }
+                          },
+                          "id": 287,
+                          "isConstant": false,
+                          "isLValue": true,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "totalScore",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": 248,
+                          "src": "916:14:2",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_int256",
+                            "typeString": "int256"
+                          }
+                        },
+                        "nodeType": "VariableDeclarationStatement",
+                        "src": "904:26:2"
+                      },
+                      {
+                        "condition": {
+                          "argumentTypes": null,
+                          "commonType": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          },
+                          "id": 292,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "leftExpression": {
+                            "argumentTypes": null,
+                            "expression": {
+                              "argumentTypes": null,
+                              "id": 289,
+                              "name": "league",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 278,
+                              "src": "948:6:2",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_struct$_League_$240_memory_ptr",
+                                "typeString": "struct LeagueData.League memory"
+                              }
+                            },
+                            "id": 290,
+                            "isConstant": false,
+                            "isLValue": true,
+                            "isPure": false,
+                            "lValueRequested": false,
+                            "memberName": "tournamentID",
+                            "nodeType": "MemberAccess",
+                            "referencedDeclaration": 237,
+                            "src": "948:19:2",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_uint256",
+                              "typeString": "uint256"
+                            }
+                          },
+                          "nodeType": "BinaryOperation",
+                          "operator": "==",
+                          "rightExpression": {
+                            "argumentTypes": null,
+                            "id": 291,
+                            "name": "_tournamentID",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 257,
+                            "src": "971:13:2",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_uint256",
+                              "typeString": "uint256"
+                            }
+                          },
+                          "src": "948:36:2",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_bool",
+                            "typeString": "bool"
+                          }
+                        },
+                        "falseBody": null,
+                        "id": 318,
+                        "nodeType": "IfStatement",
+                        "src": "945:225:2",
+                        "trueBody": {
+                          "id": 317,
+                          "nodeType": "Block",
+                          "src": "986:184:2",
+                          "statements": [
+                            {
+                              "body": {
+                                "expression": {
+                                  "argumentTypes": null,
+                                  "id": 314,
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "lValueRequested": false,
+                                  "leftHandSide": {
+                                    "argumentTypes": null,
+                                    "id": 305,
+                                    "name": "score",
+                                    "nodeType": "Identifier",
+                                    "overloadedDeclarations": [],
+                                    "referencedDeclaration": 285,
+                                    "src": "1075:5:2",
+                                    "typeDescriptions": {
+                                      "typeIdentifier": "t_int256",
+                                      "typeString": "int256"
+                                    }
+                                  },
+                                  "nodeType": "Assignment",
+                                  "operator": "+=",
+                                  "rightHandSide": {
+                                    "argumentTypes": null,
+                                    "arguments": [
+                                      {
+                                        "argumentTypes": null,
+                                        "baseExpression": {
+                                          "argumentTypes": null,
+                                          "expression": {
+                                            "argumentTypes": null,
+                                            "id": 308,
+                                            "name": "bet",
+                                            "nodeType": "Identifier",
+                                            "overloadedDeclarations": [],
+                                            "referencedDeclaration": 272,
+                                            "src": "1122:3:2",
+                                            "typeDescriptions": {
+                                              "typeIdentifier": "t_struct$_Bet_$249_memory_ptr",
+                                              "typeString": "struct LeagueData.Bet memory"
+                                            }
+                                          },
+                                          "id": 309,
+                                          "isConstant": false,
+                                          "isLValue": true,
+                                          "isPure": false,
+                                          "lValueRequested": false,
+                                          "memberName": "golferIDs",
+                                          "nodeType": "MemberAccess",
+                                          "referencedDeclaration": 244,
+                                          "src": "1122:13:2",
+                                          "typeDescriptions": {
+                                            "typeIdentifier": "t_array$_t_uint16_$6_memory",
+                                            "typeString": "uint16[6] memory"
+                                          }
+                                        },
+                                        "id": 311,
+                                        "indexExpression": {
+                                          "argumentTypes": null,
+                                          "id": 310,
+                                          "name": "j",
+                                          "nodeType": "Identifier",
+                                          "overloadedDeclarations": [],
+                                          "referencedDeclaration": 294,
+                                          "src": "1136:1:2",
+                                          "typeDescriptions": {
+                                            "typeIdentifier": "t_uint256",
+                                            "typeString": "uint256"
+                                          }
+                                        },
+                                        "isConstant": false,
+                                        "isLValue": true,
+                                        "isPure": false,
+                                        "lValueRequested": false,
+                                        "nodeType": "IndexAccess",
+                                        "src": "1122:16:2",
+                                        "typeDescriptions": {
+                                          "typeIdentifier": "t_uint16",
+                                          "typeString": "uint16"
+                                        }
+                                      },
+                                      {
+                                        "argumentTypes": null,
+                                        "id": 312,
+                                        "name": "_tournamentID",
+                                        "nodeType": "Identifier",
+                                        "overloadedDeclarations": [],
+                                        "referencedDeclaration": 257,
+                                        "src": "1140:13:2",
+                                        "typeDescriptions": {
+                                          "typeIdentifier": "t_uint256",
+                                          "typeString": "uint256"
+                                        }
+                                      }
+                                    ],
+                                    "expression": {
+                                      "argumentTypes": [
+                                        {
+                                          "typeIdentifier": "t_uint16",
+                                          "typeString": "uint16"
+                                        },
+                                        {
+                                          "typeIdentifier": "t_uint256",
+                                          "typeString": "uint256"
+                                        }
+                                      ],
+                                      "expression": {
+                                        "argumentTypes": null,
+                                        "id": 306,
+                                        "name": "golfDataOracleContract",
+                                        "nodeType": "Identifier",
+                                        "overloadedDeclarations": [],
+                                        "referencedDeclaration": 235,
+                                        "src": "1084:22:2",
+                                        "typeDescriptions": {
+                                          "typeIdentifier": "t_contract$_OracleInterface_$227",
+                                          "typeString": "contract OracleInterface"
+                                        }
+                                      },
+                                      "id": 307,
+                                      "isConstant": false,
+                                      "isLValue": false,
+                                      "isPure": false,
+                                      "lValueRequested": false,
+                                      "memberName": "getGolferScore",
+                                      "nodeType": "MemberAccess",
+                                      "referencedDeclaration": 219,
+                                      "src": "1084:37:2",
+                                      "typeDescriptions": {
+                                        "typeIdentifier": "t_function_external_view$_t_uint256_$_t_uint256_$returns$_t_int256_$",
+                                        "typeString": "function (uint256,uint256) view external returns (int256)"
+                                      }
+                                    },
+                                    "id": 313,
+                                    "isConstant": false,
+                                    "isLValue": false,
+                                    "isPure": false,
+                                    "kind": "functionCall",
+                                    "lValueRequested": false,
+                                    "names": [],
+                                    "nodeType": "FunctionCall",
+                                    "src": "1084:70:2",
+                                    "typeDescriptions": {
+                                      "typeIdentifier": "t_int256",
+                                      "typeString": "int256"
+                                    }
+                                  },
+                                  "src": "1075:79:2",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_int256",
+                                    "typeString": "int256"
+                                  }
+                                },
+                                "id": 315,
+                                "nodeType": "ExpressionStatement",
+                                "src": "1075:79:2"
+                              },
+                              "condition": {
+                                "argumentTypes": null,
+                                "commonType": {
+                                  "typeIdentifier": "t_uint256",
+                                  "typeString": "uint256"
+                                },
+                                "id": 301,
+                                "isConstant": false,
+                                "isLValue": false,
+                                "isPure": false,
+                                "lValueRequested": false,
+                                "leftExpression": {
+                                  "argumentTypes": null,
+                                  "id": 297,
+                                  "name": "j",
+                                  "nodeType": "Identifier",
+                                  "overloadedDeclarations": [],
+                                  "referencedDeclaration": 294,
+                                  "src": "1022:1:2",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_uint256",
+                                    "typeString": "uint256"
+                                  }
+                                },
+                                "nodeType": "BinaryOperation",
+                                "operator": "<",
+                                "rightExpression": {
+                                  "argumentTypes": null,
+                                  "expression": {
+                                    "argumentTypes": null,
+                                    "expression": {
+                                      "argumentTypes": null,
+                                      "id": 298,
+                                      "name": "bet",
+                                      "nodeType": "Identifier",
+                                      "overloadedDeclarations": [],
+                                      "referencedDeclaration": 272,
+                                      "src": "1026:3:2",
+                                      "typeDescriptions": {
+                                        "typeIdentifier": "t_struct$_Bet_$249_memory_ptr",
+                                        "typeString": "struct LeagueData.Bet memory"
+                                      }
+                                    },
+                                    "id": 299,
+                                    "isConstant": false,
+                                    "isLValue": true,
+                                    "isPure": false,
+                                    "lValueRequested": false,
+                                    "memberName": "golferIDs",
+                                    "nodeType": "MemberAccess",
+                                    "referencedDeclaration": 244,
+                                    "src": "1026:13:2",
+                                    "typeDescriptions": {
+                                      "typeIdentifier": "t_array$_t_uint16_$6_memory",
+                                      "typeString": "uint16[6] memory"
+                                    }
+                                  },
+                                  "id": 300,
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "lValueRequested": false,
+                                  "memberName": "length",
+                                  "nodeType": "MemberAccess",
+                                  "referencedDeclaration": null,
+                                  "src": "1026:20:2",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_uint256",
+                                    "typeString": "uint256"
+                                  }
+                                },
+                                "src": "1022:24:2",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_bool",
+                                  "typeString": "bool"
+                                }
+                              },
+                              "id": 316,
+                              "initializationExpression": {
+                                "assignments": [
+                                  294
+                                ],
+                                "declarations": [
+                                  {
+                                    "constant": false,
+                                    "id": 294,
+                                    "name": "j",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 316,
+                                    "src": "1010:6:2",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                      "typeIdentifier": "t_uint256",
+                                      "typeString": "uint256"
+                                    },
+                                    "typeName": {
+                                      "id": 293,
+                                      "name": "uint",
+                                      "nodeType": "ElementaryTypeName",
+                                      "src": "1010:4:2",
+                                      "typeDescriptions": {
+                                        "typeIdentifier": "t_uint256",
+                                        "typeString": "uint256"
+                                      }
+                                    },
+                                    "value": null,
+                                    "visibility": "internal"
+                                  }
+                                ],
+                                "id": 296,
+                                "initialValue": {
+                                  "argumentTypes": null,
+                                  "hexValue": "30",
+                                  "id": 295,
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": true,
+                                  "kind": "number",
+                                  "lValueRequested": false,
+                                  "nodeType": "Literal",
+                                  "src": "1019:1:2",
+                                  "subdenomination": null,
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_rational_0_by_1",
+                                    "typeString": "int_const 0"
+                                  },
+                                  "value": "0"
+                                },
+                                "nodeType": "VariableDeclarationStatement",
+                                "src": "1010:10:2"
+                              },
+                              "loopExpression": {
+                                "expression": {
+                                  "argumentTypes": null,
+                                  "id": 303,
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "lValueRequested": false,
+                                  "nodeType": "UnaryOperation",
+                                  "operator": "++",
+                                  "prefix": false,
+                                  "src": "1048:3:2",
+                                  "subExpression": {
+                                    "argumentTypes": null,
+                                    "id": 302,
+                                    "name": "j",
+                                    "nodeType": "Identifier",
+                                    "overloadedDeclarations": [],
+                                    "referencedDeclaration": 294,
+                                    "src": "1048:1:2",
+                                    "typeDescriptions": {
+                                      "typeIdentifier": "t_uint256",
+                                      "typeString": "uint256"
+                                    }
+                                  },
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_uint256",
+                                    "typeString": "uint256"
+                                  }
+                                },
+                                "id": 304,
+                                "nodeType": "ExpressionStatement",
+                                "src": "1048:3:2"
+                              },
+                              "nodeType": "ForStatement",
+                              "src": "1005:149:2"
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 324,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "leftHandSide": {
+                            "argumentTypes": null,
+                            "expression": {
+                              "argumentTypes": null,
+                              "baseExpression": {
+                                "argumentTypes": null,
+                                "id": 319,
+                                "name": "bets",
+                                "nodeType": "Identifier",
+                                "overloadedDeclarations": [],
+                                "referencedDeclaration": 255,
+                                "src": "1186:4:2",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_array$_t_struct$_Bet_$249_storage_$dyn_storage",
+                                  "typeString": "struct LeagueData.Bet storage ref[] storage ref"
+                                }
+                              },
+                              "id": 321,
+                              "indexExpression": {
+                                "argumentTypes": null,
+                                "id": 320,
+                                "name": "i",
+                                "nodeType": "Identifier",
+                                "overloadedDeclarations": [],
+                                "referencedDeclaration": 261,
+                                "src": "1191:1:2",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_uint256",
+                                  "typeString": "uint256"
+                                }
+                              },
+                              "isConstant": false,
+                              "isLValue": true,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "nodeType": "IndexAccess",
+                              "src": "1186:7:2",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_struct$_Bet_$249_storage",
+                                "typeString": "struct LeagueData.Bet storage ref"
+                              }
+                            },
+                            "id": 322,
+                            "isConstant": false,
+                            "isLValue": true,
+                            "isPure": false,
+                            "lValueRequested": true,
+                            "memberName": "totalScore",
+                            "nodeType": "MemberAccess",
+                            "referencedDeclaration": 248,
+                            "src": "1186:18:2",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_int256",
+                              "typeString": "int256"
+                            }
+                          },
+                          "nodeType": "Assignment",
+                          "operator": "=",
+                          "rightHandSide": {
+                            "argumentTypes": null,
+                            "id": 323,
+                            "name": "score",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 285,
+                            "src": "1207:5:2",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_int256",
+                              "typeString": "int256"
+                            }
+                          },
+                          "src": "1186:26:2",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_int256",
+                            "typeString": "int256"
+                          }
+                        },
+                        "id": 325,
+                        "nodeType": "ExpressionStatement",
+                        "src": "1186:26:2"
+                      }
+                    ]
+                  },
+                  "condition": {
+                    "argumentTypes": null,
+                    "commonType": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    },
+                    "id": 267,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftExpression": {
+                      "argumentTypes": null,
+                      "id": 264,
+                      "name": "i",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 261,
+                      "src": "770:1:2",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "nodeType": "BinaryOperation",
+                    "operator": "<",
+                    "rightExpression": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 265,
+                        "name": "bets",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 255,
+                        "src": "774:4:2",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_array$_t_struct$_Bet_$249_storage_$dyn_storage",
+                          "typeString": "struct LeagueData.Bet storage ref[] storage ref"
+                        }
+                      },
+                      "id": 266,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "length",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": null,
+                      "src": "774:11:2",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "src": "770:15:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "id": 327,
+                  "initializationExpression": {
+                    "assignments": [
+                      261
+                    ],
+                    "declarations": [
+                      {
+                        "constant": false,
+                        "id": 261,
+                        "name": "i",
+                        "nodeType": "VariableDeclaration",
+                        "scope": 327,
+                        "src": "757:6:2",
+                        "stateVariable": false,
+                        "storageLocation": "default",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        },
+                        "typeName": {
+                          "id": 260,
+                          "name": "uint",
+                          "nodeType": "ElementaryTypeName",
+                          "src": "757:4:2",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        "value": null,
+                        "visibility": "internal"
+                      }
+                    ],
+                    "id": 263,
+                    "initialValue": {
+                      "argumentTypes": null,
+                      "hexValue": "30",
+                      "id": 262,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "kind": "number",
+                      "lValueRequested": false,
+                      "nodeType": "Literal",
+                      "src": "766:1:2",
+                      "subdenomination": null,
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_rational_0_by_1",
+                        "typeString": "int_const 0"
+                      },
+                      "value": "0"
+                    },
+                    "nodeType": "VariableDeclarationStatement",
+                    "src": "757:10:2"
+                  },
+                  "loopExpression": {
+                    "expression": {
+                      "argumentTypes": null,
+                      "id": 269,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "nodeType": "UnaryOperation",
+                      "operator": "++",
+                      "prefix": false,
+                      "src": "787:3:2",
+                      "subExpression": {
+                        "argumentTypes": null,
+                        "id": 268,
+                        "name": "i",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 261,
+                        "src": "787:1:2",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "id": 270,
+                    "nodeType": "ExpressionStatement",
+                    "src": "787:3:2"
+                  },
+                  "nodeType": "ForStatement",
+                  "src": "752:472:2"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 329,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "updateUserScores",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 258,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 257,
+                  "name": "_tournamentID",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 329,
+                  "src": "713:18:2",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 256,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "713:4:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "712:20:2"
+            },
+            "returnParameters": {
+              "id": 259,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "741:0:2"
+            },
+            "scope": 343,
+            "src": "687:548:2",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": {
+              "id": 341,
+              "nodeType": "Block",
+              "src": "1313:73:2",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 338,
+                        "name": "_golferID",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 331,
+                        "src": "1368:9:2",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 336,
+                        "name": "golfDataOracleContract",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 235,
+                        "src": "1331:22:2",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_OracleInterface_$227",
+                          "typeString": "contract OracleInterface"
+                        }
+                      },
+                      "id": 337,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "getGolferCost",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 226,
+                      "src": "1331:36:2",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_external_view$_t_uint256_$returns$_t_uint256_$",
+                        "typeString": "function (uint256) view external returns (uint256)"
+                      }
+                    },
+                    "id": 339,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1331:47:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "functionReturnParameters": 335,
+                  "id": 340,
+                  "nodeType": "Return",
+                  "src": "1324:54:2"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 342,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getGolferCostWei",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 332,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 331,
+                  "name": "_golferID",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 342,
+                  "src": "1269:14:2",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 330,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1269:4:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1268:16:2"
+            },
+            "returnParameters": {
+              "id": 335,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 334,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 342,
+                  "src": "1307:4:2",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 333,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1307:4:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1306:6:2"
+            },
+            "scope": 343,
+            "src": "1243:143:2",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "internal"
+          }
+        ],
+        "scope": 344,
+        "src": "231:1162:2"
+      }
+    ],
+    "src": "0:1395:2"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.16+commit.9c3226ce.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.0.23",
+  "updatedAt": "2020-04-11T20:39:43.480Z",
+  "devdoc": {
+    "methods": {}
+  },
+  "userdoc": {
+    "methods": {}
+  }
+}

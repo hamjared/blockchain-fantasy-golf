@@ -1,19 +1,12 @@
 pragma solidity >=0.4.22 <0.6.0;
+import "./TournamentData.sol";
+import "./GolferData.sol";
 
-contract OracleInterface{
-    function getGolferScore(uint _golferID, uint _tournamentID) public view returns(int);
-    function getGolferCost(uint _golferID) public view returns (uint);
-}
-
-contract LeagueData {
-
-    address golfDataOracleAddress = 0x5b0C9dC0AFE417858DcC8dB5269E47ABc572AA77 ;
-
-    OracleInterface golfDataOracleContract = OracleInterface(golfDataOracleAddress);
-
+contract LeagueData is TournamentData, GolferData {
 
     struct League{
         uint tournamentID;
+        uint moneyPot;
         string leagueName;
     }
 
@@ -26,6 +19,11 @@ contract LeagueData {
 
     League[] public leagues;
     Bet[] public bets;
+    mapping(address => uint) userToBet; //Implies that an address will only be able to have 1 active bet.
+    mapping(address => uint) ownerToLeagueID;
+    mapping(uint => address) leagueIDtoOwner;
+    mapping(uint => uint) leagueIDtoTournamentID;
+
 
 
     function updateUserScores(uint _tournamentID) external{
@@ -35,7 +33,7 @@ contract LeagueData {
             int score = bet.totalScore;
             if(league.tournamentID == _tournamentID ){
                 for (uint j = 0; j < bet.golferIDs.length; j++ )
-                    score += golfDataOracleContract.getGolferScore(bet.golferIDs[j], _tournamentID);
+                    score += GolferData.getGolferScore(bet.golferIDs[j], _tournamentID);
             }
 
             bets[i].totalScore = score;
@@ -44,9 +42,10 @@ contract LeagueData {
 
     }
 
-    function getGolferCostWei(uint _golferID) internal view returns(uint) {
-        return golfDataOracleContract.getGolferCost(_golferID);
+    function updateGolferTournamentScore(uint _golferID, uint _tournamentID, int _score) public onlyOwner{
+        golferIDtoGolfer[_golferID].tournamentIDtoScore[_tournamentID] = _score;
     }
+
 
 
 }

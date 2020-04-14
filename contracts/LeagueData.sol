@@ -45,7 +45,7 @@ contract LeagueData is TournamentData, GolferData {
 
     }
 
-    function updateLeader(uint _leagueID) public {
+    function updateLeagueLeader(uint _leagueID) public {
         updateUserScores(leagues[_leagueID].tournamentID);
         leagueIDtoLeagueLeader[_leagueID] = findLeader(_leagueID);
     }
@@ -71,7 +71,7 @@ contract LeagueData is TournamentData, GolferData {
         return maxScoreUser;
     }
 
-    function updateGolferTournamentScore(uint _golferID, uint _tournamentID, int _score) public {
+    function updateGolferTournamentScore(uint _golferID, uint _tournamentID, int _score) public onlyOwner golferExists(_golferID) tournamentExists(_tournamentID){
         golferIDtoGolfer[_golferID].tournamentIDtoScore[_tournamentID] = _score;
     }
 

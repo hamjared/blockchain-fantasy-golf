@@ -36,6 +36,7 @@ contract TournamentData is Ownable {
 
 
   function updateTournamentStartTime(uint _tournamentID,uint32 _newStartTime) public onlyOwner tournamentExists(_tournamentID){
+      require(_newStartTime > tournamentIDtoTournament[_tournamentID].startTime);
       tournamentIDtoTournament[_tournamentID].startTime = _newStartTime;
   }
 

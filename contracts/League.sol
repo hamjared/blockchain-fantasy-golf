@@ -30,7 +30,7 @@ contract League is LeagueOwnership {
     }
 
     function withdrawEther(uint _leagueID) public tournamentOver(leagues[_leagueID].tournamentID)  {
-        updateLeader(_leagueID);
+        updateLeagueLeader(_leagueID);
         require(leagueIDtoLeagueLeader[_leagueID] == msg.sender);
         uint valueToSend = leagues[_leagueID].moneyPot;
         leagues[_leagueID].moneyPot = 0;

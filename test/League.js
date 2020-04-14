@@ -80,7 +80,7 @@ contract("League", (accounts) => {
         }
 
 
-        await contractInstance.updateLeader(leagueID);
+        await contractInstance.updateLeagueLeader(leagueID);
 
         let leagueLeader = await contractInstance.getLeagueLeader(leagueID);
         assert.equal(bob, leagueLeader);

@@ -95,6 +95,23 @@ contract("League", (accounts) => {
       let moneyPot = await contractInstance.getLeagueMoneyPot(leagueID);
       assert.equal(Web3.utils.toWei(betAmount.toString(), 'ether'), moneyPot.toString());
 
+    })
+
+    it("test withdrawEther - should fail since person withdrawing is not winner", async () => {
+        //bob should be the winner
+        let aliceGolferIDs = [1,2,3,4,5,6];
+        let bobGolferIDs = [1,2,3,7,8,9];
+        let betAmount = new BigNumber(12);
+        await contractInstance.placeBet(aliceGolferIDs, leagueID, {from: alice, value:Web3.utils.toWei(betAmount.toString(), 'ether') } );
+        await contractInstance.placeBet(bobGolferIDs, leagueID, {from: bob, value:Web3.utils.toWei(betAmount.toString(), 'ether') } );
+
+        //now update all of the golfer scores
+        for (var i = 0 ; i < golferIDs.length; i++){
+          await contractInstance.updateGolferTournamentScore(golferIDs[i], tournamentID, i);
+        }
+
+
+        await utils.shouldThrow(contractInstance.withdrawEther(leagueID, {from:alice}));
 
     })
 

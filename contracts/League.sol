@@ -29,8 +29,12 @@ contract League is LeagueOwnership {
       placeBet(_golferIDs, _leagueID);
     }
 
-    function withdrawEther(uint _leagueID) public tournamentOver(leagues[_leagueID].tournamentID) winner {
-
+    function withdrawEther(uint _leagueID) public tournamentOver(leagues[_leagueID].tournamentID)  {
+        updateLeader(_leagueID);
+        require(leagueIDtoLeagueLeader[_leagueID] == msg.sender);
+        uint valueToSend = leagues[_leagueID].moneyPot;
+        leagues[_leagueID].moneyPot = 0;
+        msg.sender.transfer(valueToSend);
     }
 
     function getBet() public view returns (uint16[6] memory, uint32, int){
@@ -63,7 +67,5 @@ contract League is LeagueOwnership {
       _;
     }
 
-    modifier winner(){
-      _;
-    }
+
 }

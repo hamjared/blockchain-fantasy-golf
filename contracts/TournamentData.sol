@@ -44,13 +44,20 @@ contract TournamentData is Ownable {
   }
 
   modifier tournamentExists(uint _tournamentID){
-    //TODO
+    require(tournamentIDtoTournament[_tournamentID].startTime > 0);
+    require(tournamentIDtoTournament[_tournamentID].endTime > 0);
+    require(bytes(tournamentIDtoTournament[_tournamentID].tournamentName).length > 0);
     _;
   }
 
   modifier tournamentDNE(uint _tournamentID){
     require(bytes(tournamentIDtoTournament[_tournamentID].tournamentName).length == 0);
     require(tournamentIDtoTournament[_tournamentID].startTime == 0);
+    _;
+  }
+
+  modifier tournamentOver(uint _tournamentID){
+    require(now > tournamentIDtoTournament[_tournamentID].endTime);
     _;
   }
 

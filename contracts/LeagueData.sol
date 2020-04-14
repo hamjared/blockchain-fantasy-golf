@@ -14,6 +14,7 @@ contract LeagueData is TournamentData, GolferData {
         uint16[6] golferIDs;
         uint32 leagueID;
         int totalScore;
+        address user;
     }
 
 
@@ -23,10 +24,12 @@ contract LeagueData is TournamentData, GolferData {
     mapping(address => uint) ownerToLeagueID;
     mapping(uint => address) leagueIDtoOwner;
     mapping(uint => uint) leagueIDtoTournamentID;
+    mapping( uint => address) leagueIDtoLeagueLeader;
 
 
 
-    function updateUserScores(uint _tournamentID) external{
+
+    function updateUserScores(uint _tournamentID) public{
         for (uint i = 0 ; i < bets.length; i++){
             Bet memory bet = bets[i];
             League memory league = leagues[bet.leagueID];
@@ -42,9 +45,37 @@ contract LeagueData is TournamentData, GolferData {
 
     }
 
-    function updateGolferTournamentScore(uint _golferID, uint _tournamentID, int _score) public onlyOwner{
+    function updateLeader(uint _leagueID) public {
+        updateUserScores(leagues[_leagueID].tournamentID);
+        leagueIDtoLeagueLeader[_leagueID] = findLeader(_leagueID);
+    }
+
+    function getLeagueLeader(uint _leagueID) public view returns(address){
+      return leagueIDtoLeagueLeader[_leagueID];
+    }
+
+    function findLeader(uint _leagueID) internal view returns(address){
+      int256 INT256_MIN = int256(uint256(1) << 255);
+      int maxScore = INT256_MIN;
+      address maxScoreUser = address(0);
+      for (uint i = 0 ; i < bets.length; i++){
+          Bet memory bet = bets[i];
+          if(bet.leagueID == _leagueID){
+            if(bet.totalScore > maxScore){
+              maxScore = bet.totalScore;
+              maxScoreUser = bet.user;
+            }
+          }
+        }
+
+        return maxScoreUser;
+    }
+
+    function updateGolferTournamentScore(uint _golferID, uint _tournamentID, int _score) public {
         golferIDtoGolfer[_golferID].tournamentIDtoScore[_tournamentID] = _score;
     }
+
+
 
 
 

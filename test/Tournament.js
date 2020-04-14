@@ -20,6 +20,7 @@ contract("TournamentData", (accounts) => {
 
         assert.equal(result.logs[0].args.tournamentID, id);
         assert.equal(result.logs[0].args.name, name);
+  
 
     })
 

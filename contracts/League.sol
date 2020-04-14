@@ -12,9 +12,9 @@ contract League is LeagueOwnership {
     }
 
     function placeBet(uint16[6] memory _golferIDs, uint32 _leagueID) public payable  noActiveBets correctEthValue(_golferIDs) leagueExists(_leagueID){
-        uint id = bets.push(Bet(_golferIDs, _leagueID, 0 )) - 1;
+        uint id = bets.push(Bet(_golferIDs, _leagueID, 0, msg.sender )) - 1;
         userToBet[msg.sender] = id;
-        leagues[id].moneyPot += msg.value;
+        leagues[_leagueID].moneyPot += msg.value;
         emit NewBet(id);
     }
 
@@ -29,10 +29,18 @@ contract League is LeagueOwnership {
       placeBet(_golferIDs, _leagueID);
     }
 
+    function withdrawEther(uint _leagueID) public tournamentOver(leagues[_leagueID].tournamentID) winner {
+
+    }
+
     function getBet() public view returns (uint16[6] memory, uint32, int){
         Bet memory bet = bets[userToBet[msg.sender]];
         return (bet.golferIDs, bet.leagueID, bet.totalScore);
     }
+
+
+
+
 
     modifier noActiveBets()  {
         require(userToBet[msg.sender] == 0);
@@ -52,6 +60,10 @@ contract League is LeagueOwnership {
 
     modifier leagueExists(uint _leagueID){
       //TODO
+      _;
+    }
+
+    modifier winner(){
       _;
     }
 }

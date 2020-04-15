@@ -45,6 +45,14 @@ contract("League", (accounts) => {
 
     })
 
+    it("test placeBet", async () => {
+        let aliceGolferIDs = [1,2,3,4,5,6];
+        let betAmount = new BigNumber( 12);
+        let result = await contractInstance.placeBetNonArray(aliceGolferIDs[0], aliceGolferIDs[1], aliceGolferIDs[2], aliceGolferIDs[3], aliceGolferIDs[4], aliceGolferIDs[5], leagueID, {from: alice, value:Web3.utils.toWei(betAmount.toString(), 'ether') } );
+        assert.equal(result.receipt.status, true);
+
+    })
+
     it("test updateUserScores", async () => {
         //bob should be the winner
         let aliceGolferIDs = [1,2,3,4,5,6];

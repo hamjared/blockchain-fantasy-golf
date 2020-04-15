@@ -13,7 +13,8 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "sol-merger": "^2.0.1"
+    "sol-merger": "^2.0.1",
+    "solidity-coverage": "^0.7.4"
   },
   "dependencies": {
     "big-integer": "^1.6.48",

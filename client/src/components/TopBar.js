@@ -22,8 +22,8 @@ function mapStateToProps(state) {
 class TopBar extends Component {
   render() {
     return (
-      <div>
-        <Menu style={{ marginTop: "10px", backgroundColor: "Salmon" }}>
+      <div style={{color: '#F5F5F5'}}>
+        <Menu style={{backgroundColor: '#3FC1C9', border: '1px solid black', marginTop: '10px'}}>
           <Menu.Item>
             <CreateZombie />
           </Menu.Item>
@@ -36,13 +36,13 @@ class TopBar extends Component {
 
           <Menu.Item>
             <Link to={{ pathname: "/ZombieInventory" }}>
-              <Button primary>Show All Zombies</Button>
+              <Button primary>Show Current League</Button>
             </Link>
           </Menu.Item>
 
           <Menu.Item position="right">
             <Link to={{ pathname: "/" }}>
-              <Header size="large">CryptoZombies at CSU!!! </Header>
+              <Header style={{color: '#F5F5F5'}} size="large">Cryptogolf DApp </Header>
             </Link>
           </Menu.Item>
 
@@ -54,7 +54,7 @@ class TopBar extends Component {
         </div>
         Your account address: {this.props.userAddress}
         <br />
-        You own {this.props.userZombieCount} zombie(s) out of a total of approximately {this.props.totalZombieCount}.
+        You are in league {this.props.userZombieCount} TODO ADD LEAGUE NUMBER OR SOMETHING HERE.
         <hr />
       </div>
     );

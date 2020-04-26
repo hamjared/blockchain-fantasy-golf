@@ -103,4 +103,4 @@ class TransferZombie extends Component {
     }
 }
 
-export default connect(mapStateToProps)(CreateZombie);
+export default connect(mapStateToProps)(TransferZombie);

@@ -57,6 +57,7 @@ class App extends Component {
 
   render() {
     return (
+      <div style={{backgroundColor: '#364F6B', color: '#F5F5F5', height: '100vh'}}>
       <Provider store={store}>
         <HashRouter>
           <Container>
@@ -82,6 +83,7 @@ class App extends Component {
           </Container>
         </HashRouter>
       </Provider>
+      </div>
     );
   }
 }

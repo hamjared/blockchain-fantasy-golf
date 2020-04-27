@@ -29,17 +29,21 @@ class TopBar extends Component {
           </Menu.Item>
 
           <Menu.Item>
-            <Link to={{ pathname: "/myZombieInventory" }}>
-              <Button primary>Show My Zombies</Button>
+            <Link to={{ pathname: "/RosterManagement" }}>
+              <Button primary>Roster Management</Button>
             </Link>
           </Menu.Item>
 
           <Menu.Item>
-            <Link to={{ pathname: "/ZombieInventory" }}>
-              <Button primary>Show Current League</Button>
+            <Link to={{ pathname: "/Matches" }}>
+              <Button primary>Matches</Button>
             </Link>
           </Menu.Item>
-
+          <Menu.Item>
+            <Link to={{ pathname: "/FreeAgents" }}>
+              <Button primary>Free Agents</Button>
+            </Link>
+          </Menu.Item>
           <Menu.Item position="right">
             <Link to={{ pathname: "/" }}>
               <Header style={{color: '#F5F5F5'}} size="large">Cryptogolf DApp </Header>
@@ -49,9 +53,6 @@ class TopBar extends Component {
 
 
         </Menu>
-        <div className="center">
-          <h2>The most awesome zombies in the whole wide universe!</h2>
-        </div>
         Your account address: {this.props.userAddress}
         <br />
         You are in league {this.props.userZombieCount} TODO ADD LEAGUE NUMBER OR SOMETHING HERE.

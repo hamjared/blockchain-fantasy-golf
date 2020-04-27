@@ -104,7 +104,7 @@ class FeedOnKitty extends Component {
             <Icon name="check" />
             Eat CryptoKitty
           </Button>
-          <Link to="/MyZombieInventory">
+          <Link to="/RosterManagement">
             <Button color="red" inverted>
               <Icon name="cancel" /> Close
             </Button>

@@ -13,7 +13,7 @@ function mapStateToProps(state) {
 }
 
 
-// Create a new Zombie
+// Create a New League
 
 class TransferZombie extends Component {
     state = {
@@ -37,13 +37,13 @@ class TransferZombie extends Component {
         });
         try {
             await this.props.CZ.methods
-                .createRandomZombie(this.state.value) // contains the zombie name
+                .createRandomZombie(this.state.value) // contains the League Name
                 .send({
                     from: this.props.userAddress
                 });
             this.setState({
                 loading: false,
-                message: "You have created a New Zombie"
+                message: "You have created a New League"
             });
             getZombieCount(this.props.CZ, this.props.userAddress);
         } catch (err) {
@@ -68,13 +68,13 @@ class TransferZombie extends Component {
         open={this.state.modalOpen}
         onClose={this.handleClose}
             >
-            <Header icon="browser" content="Create a New Zombie" />
+            <Header icon="browser" content="Create a New League" />
             <Modal.Content>
             <img src="static/images/zombieWarrior.jpg" alt="zombie warrior" /><Header>Be sure to give your zombie a WORTHY name!!!</Header>
         <br /> <br />
         <Form onSubmit={this.onSubmit} error={!!this.state.errorMessage}>
     <Form.Field>
-        <label>Zombie Name</label>
+        <label>League Name</label>
         <input
         placeholder="Name"
         onChange={event =>
@@ -87,7 +87,7 @@ class TransferZombie extends Component {
         <Message error header="Oops!" content={this.state.errorMessage} />
         <Button primary type="submit" loading={this.state.loading}>
             <Icon name="check" />
-            Create Zombie
+            Create League
         </Button>
         <hr />
         <h2>{this.state.message}</h2>

@@ -1,28 +1,21 @@
 import React, { Component } from "react";
-import {
-  Card,
-  Grid,
-  Input,
-  Segment,
-  Pagination,
-} from "semantic-ui-react";
+import { Card, Grid, Input, Segment, Pagination } from "semantic-ui-react";
 import { connect } from "react-redux";
-
 import ZombieCard from "../components/zombieCard";
 
 function mapStateToProps(state) {
   return {
     CZ: state.CZ,
-    totalZombieCount: state.totalZombieCount,
+    userZombieCount: state.userZombieCount,
     userAddress: state.userAddress
   };
 }
 
-class ZombieInventory extends Component {
+class RosterManagement extends Component {
   state = {
     ZombieTable: [],
     activePage: 1,
-    totalPages: Math.ceil(this.props.totalZombieCount / 9)
+    totalPages: Math.ceil(this.props.userZombieCount / 9)
   };
 
   componentDidMount = async () => {
@@ -35,49 +28,40 @@ class ZombieInventory extends Component {
   };
 
   handleInputChange = async (e, { value }) => {
-      await this.setState({ activePage: value });
-      this.makeZombieCards();
-  }
-
+    await this.setState({ activePage: value });
+    this.makeZombieCards();
+  };
   makeZombieCards = async () => {
-    let zList = [];
-    let zOwner = [];
-    await this.setState({ zombieTable: [] }); // clear screen while waiting for data
-
+    const myZombies = await this.props.CZ.methods
+      .getZombiesByOwner(this.props.userAddress)
+      .call();
+    let zombieTable = [];
     for (
-      let i = this.state.activePage * 9 - 9;
+      var i = this.state.activePage * 9 - 9;
       i < this.state.activePage * 9;
       i++
     ) {
       try {
-        let metaData = await this.props.CZ.methods.zombies(i).call();
-        zList.push(metaData);
-        let myOwner = await this.props.CZ.methods.zombieToOwner(i).call();
-        zOwner.push(myOwner);
-      } catch (err) {
+        let z = myZombies[i];
+        let zombie = await this.props.CZ.methods.zombies(z).call();
+        let myDate = new Date(zombie.readyTime * 1000).toLocaleString();
+        zombieTable.push(
+          <ZombieCard
+            key={z}
+            zombieId={z}
+            zombieName={zombie.name}
+            zombieDNA={zombie.dna}
+            zombieLevel={zombie.level}
+            zombieReadyTime={myDate}
+            zombieWinCount={zombie.winCount}
+            zombieLossCount={zombie.lossCount}
+            zombieOwner={this.props.userAddress}
+            myOwner={true}
+          />
+        );
+      } catch {
         break;
       }
-    }
-
-    // create a set of zombie cards in the state table
-
-    let zombieTable = [];
-    for (let i = 0; i < zList.length; i++) {
-      let myDate = new Date(zList[i].readyTime * 1000).toLocaleString();
-      zombieTable.push(
-        <ZombieCard
-          key={i}
-          zombieId={this.state.activePage * 9 - 9 + i}
-          zombieName={zList[i].name}
-          zombieDNA={zList[i].dna}
-          zombieLevel={zList[i].level}
-          zombieReadyTime={myDate}
-          zombieWinCount={zList[i].winCount}
-          zombieLossCount={zList[i].lossCount}
-          zombieOwner={zOwner[i]}
-          myOwner={this.props.userAddress === zOwner[i]}
-        />
-      );
     }
     this.setState({ zombieTable });
   };
@@ -86,7 +70,7 @@ class ZombieInventory extends Component {
     return (
       <div>
         <hr />
-        <h2> Complete Zombie Inventory </h2>
+        <h2> Your Zombie Inventory </h2>
         The zombies you own have a yellow background; clicking anywhere on a
         yellow card will bring up a list of actions you can perform.
         <hr />
@@ -112,12 +96,10 @@ class ZombieInventory extends Component {
           </Grid.Column>
         </Grid>
         <br /> <br />
-        <div>
-          <Card.Group>{this.state.zombieTable}</Card.Group>
-        </div>
+        <Card.Group> {this.state.zombieTable} </Card.Group>
       </div>
     );
   }
 }
 
-export default connect(mapStateToProps)(ZombieInventory);
+export default connect(mapStateToProps)(RosterManagement);

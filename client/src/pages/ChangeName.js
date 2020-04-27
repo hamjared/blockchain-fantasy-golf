@@ -86,7 +86,7 @@ class ChangeName extends Component {
         <br />
         <Form onSubmit={this.onSubmit} error={!!this.state.errorMessage}>
           <Form.Field>
-            <label>New Zombie Name</label>
+            <label>New League Name</label>
             <input
               placeholder="Name"
               onChange={event =>
@@ -101,7 +101,7 @@ class ChangeName extends Component {
             <Icon name="check" />
             Change Name
           </Button>
-          <Link to="/MyZombieInventory">
+          <Link to="/RosterManagement">
             <Button color="red" inverted>
               <Icon name="cancel" /> Close
             </Button>

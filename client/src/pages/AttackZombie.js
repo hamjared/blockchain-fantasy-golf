@@ -82,7 +82,7 @@ class AttackZombie extends Component {
         *
         <Header
           icon="browser"
-          content="Enter opponent zombie ID!  If you win you bump up a level and create a new zombie !"
+          content="Enter opponent zombie ID!  If you win you bump up a level and create a New League !"
         />
         <table>
           <tr>
@@ -130,7 +130,7 @@ class AttackZombie extends Component {
             <Icon name="check" />
             Attack Zombie
           </Button>
-          <Link to="/MyZombieInventory">
+          <Link to="/RosterManagement">
             <Button color="red" inverted>
               <Icon name="cancel" /> Close
             </Button>

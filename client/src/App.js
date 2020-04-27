@@ -10,8 +10,9 @@ import { Provider } from "react-redux";
 import TopBar from "./components/TopBar";
 
 import Greeting from "./pages/Greeting";
-import MyZombieInventory from "./pages/MyZombieInventory";
-import ZombieInventory from "./pages/ZombieInventory";
+import RosterManagement from "./pages/RosterManagement";
+import Matches from "./pages/Matches";
+import FreeAgents from "./pages/FreeAgents";
 import AttackZombie from "./pages/AttackZombie";
 import FeedOnKitty from "./pages/FeedOnKitty";
 import ChangeName from "./pages/ChangeName";
@@ -66,13 +67,18 @@ class App extends Component {
               <Route exact path="/" component={Greeting} />
               <Route
                 exact
-                path="/myZombieInventory"
-                component={MyZombieInventory}
+                path="/RosterManagement"
+                component={RosterManagement}
               />
               <Route
                 exact
-                path="/ZombieInventory"
-                component={ZombieInventory}
+                path="/Matches"
+                component={Matches}
+              />
+              <Route
+                exact
+                path="/FreeAgents"
+                component={FreeAgents}
               />
               {/* routes used in zombie action modal */}
               <Route exact path="/AttackZombie" component={AttackZombie} />

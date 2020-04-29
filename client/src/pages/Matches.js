@@ -40,9 +40,9 @@ class Matches extends Component {
   componentDidMount = async () => {
     await this.makeZombieCards();
     await this.setState({rows: [
-              {name:'Jhon', age:28, city:'HO'},
-              {name:'Onhj', age:82, city:'HN'},
-              {name:'Nohj', age:41, city:'IT'}]
+              {name:'Jhon 1', points:28},
+              {name:'Onhj 2', points:82},
+              {name:'Nohj 3', points:41}]
             })
     console.log(this.state.rows)
   };
@@ -128,7 +128,7 @@ class Matches extends Component {
                         <TableCell component="th" scope="row">
                           {row.name}
                         </TableCell>
-                        <TableCell align="right">{row.age}</TableCell>
+                        <TableCell align="right">{row.points}</TableCell>
                       </TableRow>
                     ))}
                   </TableBody>
@@ -153,7 +153,111 @@ class Matches extends Component {
                         <TableCell component="th" scope="row">
                           {row.name}
                         </TableCell>
-                        <TableCell align="right">{row.age}</TableCell>
+                        <TableCell align="right">{row.points}</TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              </TableContainer>
+            </Segment>
+          </Grid.Column>
+        </Grid>
+        <Grid columns={2} verticalAlign="middle">
+          <Grid.Column>
+            <Segment secondary>
+              <div>TEAM: {this.state.activePage}</div>
+              <TableContainer component={Paper}>
+                <Table className={this.state.classes.table} size="small" aria-label="a dense table">
+                  <TableHead>
+                    <TableRow>
+                      <TableCell>Player Name</TableCell>
+                      <TableCell align="right">Points</TableCell>
+                    </TableRow>
+                  </TableHead>
+                  <TableBody>
+                    {this.state.rows.map((row) => (
+                      <TableRow key={row.name}>
+                        <TableCell component="th" scope="row">
+                          {row.name}
+                        </TableCell>
+                        <TableCell align="right">{row.points}</TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              </TableContainer>
+            </Segment>
+          </Grid.Column>
+          <Grid.Column>
+            <Segment secondary>
+              <div>TEAM: {this.state.activePage}</div>
+              <TableContainer component={Paper}>
+                <Table className={this.state.classes.table} size="small" aria-label="a dense table">
+                  <TableHead>
+                    <TableRow>
+                      <TableCell>Player Name</TableCell>
+                      <TableCell align="right">Points</TableCell>
+                    </TableRow>
+                  </TableHead>
+                  <TableBody>
+                    {this.state.rows.map((row) => (
+                      <TableRow key={row.name}>
+                        <TableCell component="th" scope="row">
+                          {row.name}
+                        </TableCell>
+                        <TableCell align="right">{row.points}</TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              </TableContainer>
+            </Segment>
+          </Grid.Column>
+        </Grid>
+        <Grid columns={2} verticalAlign="middle">
+          <Grid.Column>
+            <Segment secondary>
+              <div>TEAM: {this.state.activePage}</div>
+              <TableContainer component={Paper}>
+                <Table className={this.state.classes.table} size="small" aria-label="a dense table">
+                  <TableHead>
+                    <TableRow>
+                      <TableCell>Player Name</TableCell>
+                      <TableCell align="right">Points</TableCell>
+                    </TableRow>
+                  </TableHead>
+                  <TableBody>
+                    {this.state.rows.map((row) => (
+                      <TableRow key={row.name}>
+                        <TableCell component="th" scope="row">
+                          {row.name}
+                        </TableCell>
+                        <TableCell align="right">{row.points}</TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              </TableContainer>
+            </Segment>
+          </Grid.Column>
+          <Grid.Column>
+            <Segment secondary>
+              <div>TEAM: {this.state.activePage}</div>
+              <TableContainer component={Paper}>
+                <Table className={this.state.classes.table} size="small" aria-label="a dense table">
+                  <TableHead>
+                    <TableRow>
+                      <TableCell>Player Name</TableCell>
+                      <TableCell align="right">Points</TableCell>
+                    </TableRow>
+                  </TableHead>
+                  <TableBody>
+                    {this.state.rows.map((row) => (
+                      <TableRow key={row.name}>
+                        <TableCell component="th" scope="row">
+                          {row.name}
+                        </TableCell>
+                        <TableCell align="right">{row.points}</TableCell>
                       </TableRow>
                     ))}
                   </TableBody>

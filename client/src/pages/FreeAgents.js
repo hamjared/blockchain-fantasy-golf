@@ -40,9 +40,9 @@ class FreeAgents extends Component {
   componentDidMount = async () => {
     await this.makeZombieCards();
     await this.setState({rows: [
-              {name:'Jhon', age:28, city:'HO'},
-              {name:'Onhj', age:82, city:'HN'},
-              {name:'Nohj', age:41, city:'IT'}]
+              {name:'Jhon 1', points:28},
+              {name:'Onhj 2', points:82},
+              {name:'Nohj 3', points:41}]
             })
     console.log(this.state.rows)
   };
@@ -127,7 +127,7 @@ class FreeAgents extends Component {
                         <TableCell component="th" scope="row">
                           {row.name}
                         </TableCell>
-                        <TableCell align="right">{row.age}</TableCell>
+                        <TableCell align="right">{row.points}</TableCell>
                       </TableRow>
                     ))}
                   </TableBody>
@@ -152,7 +152,7 @@ class FreeAgents extends Component {
                         <TableCell component="th" scope="row">
                           {row.name}
                         </TableCell>
-                        <TableCell align="right">{row.age}</TableCell>
+                        <TableCell align="right">{row.points}</TableCell>
                       </TableRow>
                     ))}
                   </TableBody>

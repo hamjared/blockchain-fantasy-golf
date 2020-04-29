@@ -39,11 +39,6 @@ class TopBar extends Component {
               <Button primary>Matches</Button>
             </Link>
           </Menu.Item>
-          <Menu.Item>
-            <Link to={{ pathname: "/FreeAgents" }}>
-              <Button primary>Free Agents</Button>
-            </Link>
-          </Menu.Item>
           <Menu.Item position="right">
             <Link to={{ pathname: "/" }}>
               <Header style={{color: '#F5F5F5'}} size="large">Cryptogolf DApp </Header>

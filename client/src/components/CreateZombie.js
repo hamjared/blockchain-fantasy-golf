@@ -61,7 +61,7 @@ class CreateZombie extends Component {
       return (
       <Modal
         trigger={
-          <Button primary disabled={createDisabled} onClick={this.handleOpen}>
+          <Button primary onClick={this.handleOpen}>
             Create League
           </Button>
         }

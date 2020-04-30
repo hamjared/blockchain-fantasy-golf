@@ -1,6 +1,6 @@
-import XMLHttpRequest from 'xmlhttprequest';
+const  XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
 
-/* 
+/*
 FORMATTING:
     To get the formatted data call: getTournamentData()
     The function getTournamentData() returns a javascript object with this format:
@@ -44,12 +44,12 @@ var callGolfApiAsync = function() {
         var bmwTournament = 'https://api.sportsdata.io/golf/v2/json/Leaderboard/343';
 
         var xmlHttp = new XMLHttpRequest();
-        
-        xmlHttp.onreadystatechange = function() { 
+
+        xmlHttp.onreadystatechange = function() {
             if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
                 callback(xmlHttp.responseText);
         }
-        xmlHttp.open("GET", url, true); // true for asynchronous 
+        xmlHttp.open("GET", url, true); // true for asynchronous
         xmlHttp.setRequestHeader('Ocp-Apim-Subscription-Key', '6be4b90a71bd47d7a7a8c08e0f5ae0aa');
         xmlHttp.send(null);
         return xmlHttp.response;
@@ -105,4 +105,3 @@ function handleApiResponse() {
 function getTournamentData(){
     handleApiResponse();
 }
-

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import getZombieCount from "../utils/getZombieCount";
+//import getZombieCount from "../utils/getZombieCount";
 import { connect } from "react-redux";
 
 import { Button, Header, Icon, Modal, Form, Message } from "semantic-ui-react";
@@ -15,10 +15,11 @@ function mapStateToProps(state) {
 
 // Create a New League
 
-class CreateZombie extends Component {
+class CreateLeague extends Component {
   state = {
     modalOpen: false,
-    value: "",
+    leagueName: "",
+    tournamentID: "",
     message: "",
     errorMessage: "",
     loading: false
@@ -36,16 +37,29 @@ class CreateZombie extends Component {
       message: "waiting for blockchain transaction to complete..."
     });
     try {
-      await this.props.CZ.methods
-        .createRandomZombie(this.state.value) // contains the League Name
+      console.log("MAKE LEAGUE")
+      let creation = await this.props.CZ.methods
+        .createLeague(this.state.tournamentID, this.state.leagueName) // contains the League Name
         .send({
-          from: this.props.userAddress
+          from: this.props.userAddress,
+          gas: 1000000
         });
+        console.log(creation)
+        let leagueFromOwner = await this.props.CZ.methods
+          .getLeagueFromOwner(this.props.userAddress) // contains the League Name
+          .call().then(console.log());
+        console.log(leagueFromOwner)
       this.setState({
         loading: false,
         message: "You have created a New League"
       });
-      getZombieCount(this.props.CZ, this.props.userAddress);
+      await this.props.CZ.events.NewLeague()
+      .on('data', (event) => {
+        console.log(event)
+        console.log("EVENT ABOVE")
+      })
+      .on('error', console.error);
+      console.log("DONE")
     } catch (err) {
       this.setState({
         loading: false,
@@ -79,7 +93,16 @@ class CreateZombie extends Component {
                 placeholder="Name"
                 onChange={event =>
                   this.setState({
-                    value: event.target.value
+                    value: event.target.leagueName
+                  })
+                }
+              />
+              <label>Tournament ID</label>
+              <input
+                placeholder="Tournament ID"
+                onChange={event =>
+                  this.setState({
+                    value: event.target.tournamentID
                   })
                 }
               />
@@ -103,4 +126,4 @@ class CreateZombie extends Component {
   }
 }
 
-export default connect(mapStateToProps)(CreateZombie);
+export default connect(mapStateToProps)(CreateLeague);

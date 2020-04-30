@@ -27,7 +27,12 @@ function mapStateToProps(state) {
 
 class FreeAgents extends Component {
   state = {
-    ZombieTable: [],
+    Player1: [],
+    Player2: [],
+    Player3: [],
+    Player4: [],
+    Player5: [],
+    Player6: [],
     activePage: 1,
     totalPages: Math.ceil(this.props.totalZombieCount / 9),
     rows: [],
@@ -44,6 +49,7 @@ class FreeAgents extends Component {
               {name:'Onhj 2', points:82},
               {name:'Nohj 3', points:41}]
             })
+
     console.log(this.state.rows)
   };
   createData = async (name, calories, fat, carbs, protein) => {
@@ -66,11 +72,7 @@ class FreeAgents extends Component {
     let zOwner = [];
     await this.setState({ zombieTable: [] }); // clear screen while waiting for data
 
-    for (
-      let i = this.state.activePage * 9 - 9;
-      i < this.state.activePage * 9;
-      i++
-    ) {
+    for (let i = this.state.activePage * 9 - 9;i < this.state.activePage * 9;i++) {
       try {
         let metaData = await this.props.CZ.methods.zombies(i).call();
         zList.push(metaData);
@@ -80,34 +82,13 @@ class FreeAgents extends Component {
         break;
       }
     }
-
-
-    let zombieTable = [];
-    for (let i = 0; i < zList.length; i++) {
-      let myDate = new Date(zList[i].readyTime * 1000).toLocaleString();
-      zombieTable.push(
-        <ZombieCard
-          key={i}
-          zombieId={this.state.activePage * 9 - 9 + i}
-          zombieName={zList[i].name}
-          zombieDNA={zList[i].dna}
-          zombieLevel={zList[i].level}
-          zombieReadyTime={myDate}
-          zombieWinCount={zList[i].winCount}
-          zombieLossCount={zList[i].lossCount}
-          zombieOwner={zOwner[i]}
-          myOwner={this.props.userAddress === zOwner[i]}
-        />
-      );
-    }
-    this.setState({ zombieTable });
   };
 
   render() {
     return (
       <div>
         <hr />
-        <h2> Free Agents </h2>
+        <h2> Fantasy Matches </h2>
         <hr />
         <Grid columns={2} verticalAlign="middle">
           <Grid.Column>
@@ -161,6 +142,111 @@ class FreeAgents extends Component {
             </Segment>
           </Grid.Column>
         </Grid>
+        <Grid columns={2} verticalAlign="middle">
+          <Grid.Column>
+            <Segment secondary>
+              <div>TEAM: {this.state.activePage}</div>
+              <TableContainer component={Paper}>
+                <Table className={this.state.classes.table} size="small" aria-label="a dense table">
+                  <TableHead>
+                    <TableRow>
+                      <TableCell>Player Name</TableCell>
+                      <TableCell align="right">Points</TableCell>
+                    </TableRow>
+                  </TableHead>
+                  <TableBody>
+                    {this.state.rows.map((row) => (
+                      <TableRow key={row.name}>
+                        <TableCell component="th" scope="row">
+                          {row.name}
+                        </TableCell>
+                        <TableCell align="right">{row.points}</TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              </TableContainer>
+            </Segment>
+          </Grid.Column>
+          <Grid.Column>
+            <Segment secondary>
+              <div>TEAM: {this.state.activePage}</div>
+              <TableContainer component={Paper}>
+                <Table className={this.state.classes.table} size="small" aria-label="a dense table">
+                  <TableHead>
+                    <TableRow>
+                      <TableCell>Player Name</TableCell>
+                      <TableCell align="right">Points</TableCell>
+                    </TableRow>
+                  </TableHead>
+                  <TableBody>
+                    {this.state.rows.map((row) => (
+                      <TableRow key={row.name}>
+                        <TableCell component="th" scope="row">
+                          {row.name}
+                        </TableCell>
+                        <TableCell align="right">{row.points}</TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              </TableContainer>
+            </Segment>
+          </Grid.Column>
+        </Grid>
+        <Grid columns={2} verticalAlign="middle">
+          <Grid.Column>
+            <Segment secondary>
+              <div>TEAM: {this.state.activePage}</div>
+              <TableContainer component={Paper}>
+                <Table className={this.state.classes.table} size="small" aria-label="a dense table">
+                  <TableHead>
+                    <TableRow>
+                      <TableCell>Player Name</TableCell>
+                      <TableCell align="right">Points</TableCell>
+                    </TableRow>
+                  </TableHead>
+                  <TableBody>
+                    {this.state.rows.map((row) => (
+                      <TableRow key={row.name}>
+                        <TableCell component="th" scope="row">
+                          {row.name}
+                        </TableCell>
+                        <TableCell align="right">{row.points}</TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              </TableContainer>
+            </Segment>
+          </Grid.Column>
+          <Grid.Column>
+            <Segment secondary>
+              <div>TEAM: {this.state.activePage}</div>
+              <TableContainer component={Paper}>
+                <Table className={this.state.classes.table} size="small" aria-label="a dense table">
+                  <TableHead>
+                    <TableRow>
+                      <TableCell>Player Name</TableCell>
+                      <TableCell align="right">Points</TableCell>
+                    </TableRow>
+                  </TableHead>
+                  <TableBody>
+                    {this.state.rows.map((row) => (
+                      <TableRow key={row.name}>
+                        <TableCell component="th" scope="row">
+                          {row.name}
+                        </TableCell>
+                        <TableCell align="right">{row.points}</TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              </TableContainer>
+            </Segment>
+          </Grid.Column>
+        </Grid>
+        <Input type="button">End Tournament</Input>
         <br /> <br />
         <div>
           <Card.Group>{this.state.zombieTable}</Card.Group>

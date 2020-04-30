@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import getZombieCount from "../utils/getZombieCount";
+//import getZombieCount from "../utils/getZombieCount";
 import { connect } from "react-redux";
 
 import { Button, Header, Icon, Modal, Form, Message } from "semantic-ui-react";

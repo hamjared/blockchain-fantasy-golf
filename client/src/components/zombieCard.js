@@ -75,33 +75,6 @@ class ZombieCard extends Component {
               content="These are the actions you can take with your zombie!"
             />
 
-            <Modal.Content>
-              <ActionButton
-                pathname="/AttackZombie"
-                buttonLabel={attackButton}
-                data={this.props}
-              />
-
-              <ActionButton
-                pathname="/FeedOnKitty"
-                buttonLabel={kittyButton}
-                data={this.props}
-              />
-
-              <ActionButton
-                pathname="/ChangeName"
-                buttonLabel={changeNameButton}
-                disableMe={this.props.zombieLevel <= 2}
-                data={this.props}
-              />
-
-              <ActionButton
-                pathname="/LevelUp"
-                buttonLabel={levelUpButton}
-                data={this.props}
-              />
-            </Modal.Content>
-
             <Modal.Actions>
               <Button color="red" onClick={this.handleClose} inverted>
                 <Icon name="cancel" /> Close

@@ -4,8 +4,8 @@ import { connect } from "react-redux";
 
 import { Button } from "semantic-ui-react";
 
-import CreateZombie from "./CreateZombie";
-import TransferZombie from "./TransferZombie";
+import CreateLeague from "./CreateLeague";
+//import TransferZombie from "./TransferZombie";
 
 import { Menu, Header } from "semantic-ui-react";
 
@@ -25,7 +25,7 @@ class TopBar extends Component {
       <div style={{color: '#F5F5F5'}}>
         <Menu style={{backgroundColor: '#3FC1C9', border: '1px solid black', marginTop: '10px'}}>
           <Menu.Item>
-            <CreateZombie />
+            <CreateLeague />
           </Menu.Item>
 
           <Menu.Item>
@@ -38,6 +38,9 @@ class TopBar extends Component {
             <Link to={{ pathname: "/Matches" }}>
               <Button primary>Matches</Button>
             </Link>
+          </Menu.Item>
+          <Menu.Item>
+              <Button primary>End Tournament</Button>
           </Menu.Item>
           <Menu.Item position="right">
             <Link to={{ pathname: "/" }}>

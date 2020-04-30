@@ -1,4 +1,4 @@
-import CryptoZombiesContract from "../contract_ABI/CryptoZombies.json";
+import CryptoZombiesContract from "../contract_ABI/League.json";
 import store from "../redux/store";
 
 //import blockchainInitialized from "../redux/modules/czAppDuck";  // for some unknown reason, the duck doesn't work!
@@ -22,13 +22,14 @@ async function initBlockchain(web3) {
   // Use web3 to get the user's accounts.
   const accounts = await web3.eth.getAccounts();
   const userAddress = accounts[0];
-
+  web3.eth.gas=100000
   // Get contract instance
-  const networkId = await web3.eth.net.getId();
+  const networkId = 4447;
+  //const networkId = await web3.eth.net.getId();
   const deployedNetwork = CryptoZombiesContract.networks[networkId];
   const instance = new web3.eth.Contract(
     CryptoZombiesContract.abi,
-    deployedNetwork && deployedNetwork.address
+    deployedNetwork && deployedNetwork.address,
   );
 
   // put state data into the REDUX store for easy access from other pages and components

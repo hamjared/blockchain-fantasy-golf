@@ -17,9 +17,9 @@ function zombieCount(data) {
 async function getZombieCount(CZ, userAddress) {
   // get number of zombies owned by the user account
 
-  let userZombieCount = +(await CZ.methods // + convert a string to an integer
-    .balanceOf(userAddress)
-    .call());
+  //let userZombieCount = +(await CZ.methods // + convert a string to an integer
+  //  .balanceOf(userAddress)
+  //  .call());
 
   // do a binary search to estimate total zombie count.
   // It is a real shame that the Cryptozombies contract doesn't totally comply with ERC720 to include a function
@@ -31,7 +31,7 @@ async function getZombieCount(CZ, userAddress) {
 
   while (low < high) {
     try {
-      await CZ.methods.zombies(middle).call();
+      //await CZ.methods.zombies(middle).call();
       low = middle + 1;
       middle = Math.floor(low + (high - low) / 2);
     } catch {
@@ -42,12 +42,12 @@ async function getZombieCount(CZ, userAddress) {
 
   // put state data into the REDUX store for easy access from other pages and components
 
-  let data = {
-    totalZombieCount: low-1,     // from binary search
-    userZombieCount          //EC7 shorthand for totalZombieCount:totalZombieCount because of same variable name
-  };
+//  let data = {
+//    totalZombieCount: low-1,     // from binary search
+//    userZombieCount          //EC7 shorthand for totalZombieCount:totalZombieCount because of same variable name
+//  };
 
-  store.dispatch(zombieCount(data));
+//  store.dispatch(zombieCount(data));
 }
 
 export default getZombieCount;

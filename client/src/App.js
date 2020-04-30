@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import getWeb3 from "./utils/getWeb3";
 import initBlockchain from "./utils/initBlockchain";
-import getZombieCount from "./utils/getZombieCount";
+//import getZombieCount from "./utils/getZombieCount";
 
 import { HashRouter, Route } from "react-router-dom";
 import { Container } from "semantic-ui-react";
@@ -14,7 +14,6 @@ import RosterManagement from "./pages/RosterManagement";
 import Matches from "./pages/Matches";
 import FreeAgents from "./pages/FreeAgents";
 import AttackZombie from "./pages/AttackZombie";
-import FeedOnKitty from "./pages/FeedOnKitty";
 import ChangeName from "./pages/ChangeName";
 import LevelUp from "./pages/LevelUp";
 
@@ -38,7 +37,7 @@ class App extends Component {
     try {
       const web3 = await getWeb3(); // from utils directory;  connect to metamask
       const data = await initBlockchain(web3);  // get contract instance and user address
-      await getZombieCount(data.CZ, data.userAddress);  // get user count and total count of zombies
+      //await getZombieCount(data.CZ, data.userAddress);  // get user count and total count of zombies
     } catch (error) {
       // Catch any errors for any of the above operations.
       alert(
@@ -82,7 +81,6 @@ class App extends Component {
               />
               {/* routes used in zombie action modal */}
               <Route exact path="/AttackZombie" component={AttackZombie} />
-              <Route exact path="/FeedOnKitty" component={FeedOnKitty} />
               <Route exact path="/ChangeName" component={ChangeName} />
               <Route exact path="/LevelUp" component={LevelUp} />
             </div>

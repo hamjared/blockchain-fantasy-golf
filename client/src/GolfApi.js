@@ -49,7 +49,7 @@ var callGolfApiAsync = function() {
             if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
                 callback(xmlHttp.responseText);
         }
-        xmlHttp.open("GET", url, true); // true for asynchronous
+        xmlHttp.open("GET", bmwTournament, true); // true for asynchronous
         xmlHttp.setRequestHeader('Ocp-Apim-Subscription-Key', '6be4b90a71bd47d7a7a8c08e0f5ae0aa');
         xmlHttp.send(null);
         return xmlHttp.response;

@@ -29,6 +29,11 @@ contract League is LeagueOwnership {
       placeBet(_golferIDs, _leagueID);
     }
 
+    function getUserGolferIds() public view returns(uint16[6] memory){
+      Bet memory bet = bets[userToBet[msg.sender]];
+      return bet.golferIDs;
+    }
+
     function withdrawEther(uint _leagueID) public tournamentOver(leagues[_leagueID].tournamentID)  {
         updateLeagueLeader(_leagueID);
         require(leagueIDtoLeagueLeader[_leagueID] == msg.sender);
@@ -41,10 +46,6 @@ contract League is LeagueOwnership {
         Bet memory bet = bets[userToBet[msg.sender]];
         return (bet.golferIDs, bet.leagueID, bet.totalScore);
     }
-
-
-
-
 
     modifier noActiveBets()  {
         require(userToBet[msg.sender] == 0);

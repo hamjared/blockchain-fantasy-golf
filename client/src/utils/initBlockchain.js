@@ -24,16 +24,16 @@ async function initBlockchain(web3) {
   const userAddress = accounts[0];
   web3.eth.gas=100000
   // Get contract instance
-  const networkId = 4447;
-  //const networkId = await web3.eth.net.getId();
+  //const networkId = 4447;
+  const networkId = await web3.eth.net.getId();
   const deployedNetwork = CryptoZombiesContract.networks[networkId];
   const instance = new web3.eth.Contract(
     CryptoZombiesContract.abi,
-    deployedNetwork && deployedNetwork.address,
+    '0x35354D9539e3086f84536f7EA60A90dD0C32e14e',
   );
-
+  console.log(instance)
   // put state data into the REDUX store for easy access from other pages and components
-
+//deployedNetwork && ''deployedNetwork.address''
   let data = {
     CZ: instance,
     userAddress,    // shorthand

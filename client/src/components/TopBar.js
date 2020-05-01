@@ -13,7 +13,8 @@ function mapStateToProps(state) {
   return {
     userAddress: state.userAddress,
     userZombieCount: state.userZombieCount,
-    totalZombieCount: state.totalZombieCount
+    totalZombieCount: state.totalZombieCount,
+    leagueNumber: 1
   };
 }
 
@@ -53,7 +54,7 @@ class TopBar extends Component {
         </Menu>
         Your account address: {this.props.userAddress}
         <br />
-        You are in league {this.props.userZombieCount} TODO ADD LEAGUE NUMBER OR SOMETHING HERE.
+        You are in league(ID): {this.props.leagueNumber}
         <hr />
       </div>
     );

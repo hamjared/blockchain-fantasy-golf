@@ -6,6 +6,7 @@ import "./LeagueOwnership.sol";
 contract League is LeagueOwnership {
     event NewBet(uint betID);
 
+    
 
     function getLeagueMoneyPot(uint _leagueID) public view returns(uint){
       return leagues[_leagueID].moneyPot;

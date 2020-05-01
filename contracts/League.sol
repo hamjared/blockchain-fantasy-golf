@@ -18,7 +18,7 @@ contract League is LeagueOwnership {
         emit NewBet(id);
     }
 
-    function placeBet(uint16 _golferID0, uint16 _golferID1, uint16 _golferID2, uint16 _golferID3, uint16 _golferID4, uint16 _golferID5, uint32 _leagueID ) public payable{
+    function placeBetNonArray(uint16 _golferID0, uint16 _golferID1, uint16 _golferID2, uint16 _golferID3, uint16 _golferID4, uint16 _golferID5, uint32 _leagueID ) public payable{
       uint16[6] memory _golferIDs;
       _golferIDs[0] = _golferID0;
       _golferIDs[1] = _golferID1;

@@ -44,21 +44,54 @@ class CreateLeague extends Component {
           from: this.props.userAddress,
           gas: 1000000
         });
+
+        await this.props.CZ.events.NewLeague({
+          fromBlock: 0,
+          toBlock: 'latest'})
+          .on('data', event => {
+            console.log('new event:', event)
+          })
+          .on('changed', event => {
+            console.log('event removed from blockchain:', event)
+          })
+          .on('error', error => {
+           console.error(error)
+          })
+        // event.get(function(error, logs){
+        //   console.log(error, logs)
+        // });
+        // console.log(event)
         console.log(creation)
-        let leagueFromOwner = await this.props.CZ.methods
-          .getLeagueFromOwner(this.props.userAddress) // contains the League Name
-          .call().then(console.log());
-        console.log(leagueFromOwner)
+
+      // var event2 = await this.props.CZ.events.allEvents();
+      // console.log(event2)
+      // var events = await this.props.CZ.getPastEvents("allEvents",
+      // {
+      //   fromBlock: 0,
+      //   toBlock: 'latest'
+      // }).then(events => console.log(events))
+      // console.log("-----------------")
+      // console.log(events)
+
+      // let bet = await this.props.CZ.methods
+      //   .getBet() // contains the League Name
+      //   .call({
+      //     from: this.props.userAddress,
+      //     gas: 1000000
+      //   }).then(console.log());
+      // console.log(bet)
+
+
       this.setState({
         loading: false,
         message: "You have created a New League"
       });
-      await this.props.CZ.events.NewLeague()
-      .on('data', (event) => {
-        console.log(event)
-        console.log("EVENT ABOVE")
-      })
-      .on('error', console.error);
+      // await this.props.CZ.events.NewLeague()
+      // .on('data', (event) => {
+      //   console.log(event)
+      //   console.log("EVENT ABOVE")
+      // })
+      // .on('error', console.error);
       console.log("DONE")
     } catch (err) {
       this.setState({

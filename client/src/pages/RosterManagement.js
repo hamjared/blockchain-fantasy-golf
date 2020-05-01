@@ -46,13 +46,10 @@ class RosterManagement extends Component {
   };
   componentDidMount = async () => {
     await this.makeZombieCards();
-    await this.setState({rows: [
-              {name:'Jhon 1', cost:28},
-              {name:'Onhj 2', cost:82},
-              {name:'Nohj 3', cost:41}]
+    await this.setState({rows: []
             })
       await this.setState({rows2: [
-                {name:'Jhon 12', cost:28},
+                {name:'Jhon 12', cost:23},
                 {name:'Onhj 23', cost:82},
                 {name:'Jhon 14', cost:28},
                 {name:'Onhj 25', cost:82},
@@ -83,7 +80,64 @@ class RosterManagement extends Component {
       await this.setState({ activePage: value });
       this.makeZombieCards();
   }
+  onHire = async(e, value) => {
+    value = value.value
+    let r1 = 0
+    let r2 = 0
+    for(let i=0;i<this.state.rows2.length;i++){
+      if(this.state.rows2[i].name == value){
+        r2 = i
+      }
+    }
+    if(this.state.rows.length < 6){
+      let newRows1 = this.state.rows;
+      newRows1.push(this.state.rows2[r2])
+      this.setState({rows: newRows1})
+      let newRows2 = this.state.rows2;
+      newRows2.splice(r2, 1);
+      this.setState({rows2: newRows2})
+    }
+  }
 
+  onFire = async(e, value) => {
+    value = value.value
+    let r1 = 0
+    let r2 = 0
+    for(let i=0;i< this.state.rows.length;i++){
+      if(this.state.rows[i].name == value){
+        r1 = i
+      }
+    }
+    let newRows2 = this.state.rows2;
+    newRows2.push(this.state.rows[r1])
+    this.setState({rows2: newRows2})
+    let newRows1 = this.state.rows;
+    newRows1.splice(r1, 1);
+    this.setState({rows: newRows1})
+  }
+
+  submitRoster = async(e, value) => {
+    console.log("submit roster")
+    console.log(this.state.rows.length)
+    if(this.state.rows.length == 6){
+      console.log("gucci")
+      let golfer = this.state.rows
+      let roster = await this.props.CZ.methods
+        .placeBet(golfer[0].cost, golfer[1].cost, golfer[2].cost, golfer[3].cost, golfer[4].cost, golfer[5].cost, 1) // contains the League Name
+        .send({
+          from: this.props.userAddress,
+          gas: 1000000
+        });
+      console.log(roster)
+      let bet = await this.props.CZ.methods
+        .getBet() // contains the League Name
+        .call({
+          from: this.props.userAddress,
+          gas: 1000000
+        });
+      console.log(bet)
+    }
+  }
 
   makeZombieCards = async () => {
     let zList = [];
@@ -108,6 +162,9 @@ class RosterManagement extends Component {
         <hr />
         <h2> Roster Management </h2>
         <hr />
+        <Button onClick={this.submitRoster}>Submit Roster</Button>
+        <br/>
+        <br/>
         <Grid columns={2}>
           <Grid.Column>
             <Segment secondary>
@@ -128,7 +185,7 @@ class RosterManagement extends Component {
                           {row.name}
                         </TableCell>
                         <TableCell>{row.cost}</TableCell>
-                        <TableCell align="right"><Button>Fire</Button></TableCell>
+                        <TableCell align="right"><Button value={row.name} onClick={this.onFire}>Fire</Button></TableCell>
                       </TableRow>
                     ))}
                   </TableBody>
@@ -155,7 +212,7 @@ class RosterManagement extends Component {
                         {row.name}
                       </TableCell>
                       <TableCell>{row.cost}</TableCell>
-                      <TableCell align="right"><Button>Hire</Button></TableCell>
+                      <TableCell align="right"><Button value={row.name} onClick={this.onHire}>Hire</Button></TableCell>
                     </TableRow>
                   ))}
                 </TableBody>

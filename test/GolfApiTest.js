@@ -1,7 +1,7 @@
 const GolfApi = require('../client/src/GolfApi.js');
 
 
-contract("GolfApi", () => {
+/* contract("GolfApi", () => {
     it("test GolfApi", async() => {
         let tournamentName = "BMW Championship";
         let playerName = "Justin Thomas";
@@ -14,5 +14,5 @@ contract("GolfApi", () => {
         assert.equal(tournament.playerList[0].rank, playerRank);
         assert.equal(tournament.playerList[0].rounds.length, numRounds);
     })
-})
+}) */
 

@@ -9,7 +9,10 @@ contract("GolfApi", () => {
         let numRounds = 4;
 
         let tournament = await GolfApi.getTournamentData();
-        print(tournament);
+        assert.equal(tournament.name, tournamentName);
+        assert.equal(tournament.playerList[0].name, playerName);
+        assert.equal(tournament.playerList[0].rank, playerRank);
+        assert.equal(tournament.playerList[0].rounds.length, numRounds);
     })
 })
 

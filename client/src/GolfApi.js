@@ -1,5 +1,4 @@
-const  XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
-
+const  fetch = require('node-fetch');
 /*
 FORMATTING:
     To get the formatted data call: getTournamentData()
@@ -39,21 +38,18 @@ FORMATTING:
     }
 */
 
-var callGolfApiAsync = function() {
-    this.get = function(callback){
-        var bmwTournament = 'https://api.sportsdata.io/golf/v2/json/Leaderboard/343';
+async function fetchGolfApi() {
+    var bmwTournament = 'https://api.sportsdata.io/golf/v2/json/Leaderboard/343';
 
-        var xmlHttp = new XMLHttpRequest();
+    var response = await fetch(bmwTournament, {
+      headers: {
+        'Ocp-Apim-Subscription-Key': '509d9efec91f4808b555f938238fe217'
+      }
+    });
 
-        xmlHttp.onreadystatechange = function() {
-            if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
-                callback(xmlHttp.responseText);
-        }
-        xmlHttp.open("GET", bmwTournament, true); // true for asynchronous
-        xmlHttp.setRequestHeader('Ocp-Apim-Subscription-Key', '6be4b90a71bd47d7a7a8c08e0f5ae0aa');
-        xmlHttp.send(null);
-        return xmlHttp.response;
-    }
+    var data = await response.json();
+    console.log(data);
+    return data;
 }
 
 function getRounds(player){
@@ -92,16 +88,13 @@ function getTournament(data){
     return tournament;
 }
 
-function handleApiResponse() {
-    var client = new callGolfApiAsync();
-    var tournament;
-    client.get(function(response) {
-        var data = JSON.parse(response);
-        tournament = getTournament(data);
-    });
-    return tournament;
+async function handleApiResponse() {
+    var data = await fetchGolfApi();
+    return getTournament(data);
+}
+  
+function  getTournamentData(){
+    return handleApiResponse();
 }
 
-function getTournamentData(){
-    handleApiResponse();
-}
+module.exports = {getTournamentData}

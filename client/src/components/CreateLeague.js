@@ -19,7 +19,7 @@ class CreateLeague extends Component {
   state = {
     modalOpen: false,
     leagueName: "",
-    tournamentID: "",
+    tournamentID: 1,
     message: "",
     errorMessage: "",
     loading: false
@@ -36,27 +36,42 @@ class CreateLeague extends Component {
       errorMessage: "",
       message: "waiting for blockchain transaction to complete..."
     });
+    let addresses=[
+      '0xE7b8168B405c4B47E13e194BD017346487aDd600',
+      '0x740e54cdE748A713AA51aB9b8aBAE01Ea749e9CE',
+      '0xC8fc0fdCa28E14F36B20282793763bdEDf31bEaa',
+      '0xCDA1692240647564a586fB403253c899417D63Ce',
+      '0x8049985bfEf0B574EdfA83a431832F8772078a66',
+      '0x8688EeAE90DCc0872B19f5E80057b3B716aEFe8f'
+    ]
     try {
       console.log("MAKE LEAGUE")
+      let tournament = await this.props.CZ.methods
+        .createTournament(1, "main", 15818474599, 15818476599) // contains the League Name
+        .send({
+          from: this.props.userAddress,
+          gas: 1000000
+        });
+        console.log(tournament)
       let creation = await this.props.CZ.methods
-        .createLeague(this.state.tournamentID, this.state.leagueName) // contains the League Name
+        .createLeague(this.state.tournamentID, this.state.leagueName, addresses) // contains the League Name
         .send({
           from: this.props.userAddress,
           gas: 1000000
         });
 
-        await this.props.CZ.events.NewLeague({
-          fromBlock: 0,
-          toBlock: 'latest'})
-          .on('data', event => {
-            console.log('new event:', event)
-          })
-          .on('changed', event => {
-            console.log('event removed from blockchain:', event)
-          })
-          .on('error', error => {
-           console.error(error)
-          })
+        // await this.props.CZ.events.NewLeague({
+        //   fromBlock: 0,
+        //   toBlock: 'latest'})
+        //   .on('data', event => {
+        //     console.log('new event:', event)
+        //   })
+        //   .on('changed', event => {
+        //     console.log('event removed from blockchain:', event)
+        //   })
+        //   .on('error', error => {
+        //    console.error(error)
+        //   })
         // event.get(function(error, logs){
         //   console.log(error, logs)
         // });
@@ -73,13 +88,13 @@ class CreateLeague extends Component {
       // console.log("-----------------")
       // console.log(events)
 
-      // let bet = await this.props.CZ.methods
-      //   .getBet() // contains the League Name
+      // let leagueNum = await this.props.CZ.methods
+      //   .getLeagueID() // contains the League Name
       //   .call({
       //     from: this.props.userAddress,
       //     gas: 1000000
       //   }).then(console.log());
-      // console.log(bet)
+      // console.log("LEAGUE NUM" + leagueNum)
 
 
       this.setState({

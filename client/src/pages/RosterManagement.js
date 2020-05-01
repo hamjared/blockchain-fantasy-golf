@@ -123,7 +123,7 @@ class RosterManagement extends Component {
       console.log("gucci")
       let golfer = this.state.rows
       let roster = await this.props.CZ.methods
-        .placeBet(golfer[0].cost, golfer[1].cost, golfer[2].cost, golfer[3].cost, golfer[4].cost, golfer[5].cost, 1) // contains the League Name
+        .placeBet([golfer[0].cost, golfer[1].cost, golfer[2].cost, golfer[3].cost, golfer[4].cost, golfer[5].cost], 1) // contains the League Name
         .send({
           from: this.props.userAddress,
           gas: 1000000
@@ -131,7 +131,7 @@ class RosterManagement extends Component {
       console.log(roster)
       let bet = await this.props.CZ.methods
         .getBet() // contains the League Name
-        .call({
+        .send({
           from: this.props.userAddress,
           gas: 1000000
         });

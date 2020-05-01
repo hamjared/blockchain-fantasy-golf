@@ -24,7 +24,7 @@ contract LeagueData is TournamentData, GolferData {
     mapping(address => uint) ownerToLeagueID;
     mapping(uint => address) leagueIDtoOwner;
     mapping(uint => uint) leagueIDtoTournamentID;
-    mapping( uint => address) leagueIDtoLeagueLeader;
+    mapping(uint => address) leagueIDtoLeagueLeader;
 
 
 
@@ -74,6 +74,8 @@ contract LeagueData is TournamentData, GolferData {
     function updateGolferTournamentScore(uint _golferID, uint _tournamentID, int _score) public onlyOwner golferExists(_golferID) tournamentExists(_tournamentID){
         golferIDtoGolfer[_golferID].tournamentIDtoScore[_tournamentID] = _score;
     }
+
+  
 
 
 

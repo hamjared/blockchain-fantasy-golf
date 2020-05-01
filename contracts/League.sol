@@ -18,7 +18,7 @@ contract League is LeagueOwnership {
         emit NewBet(id);
     }
 
-    function placeBet(uint16 _golferID0, uint16 _golferID1, uint16 _golferID2, uint16 _golferID3, uint16 _golferID4, uint16 _golferID5, uint32 _leagueID ) public payable{
+    function placeBetNonArray(uint16 _golferID0, uint16 _golferID1, uint16 _golferID2, uint16 _golferID3, uint16 _golferID4, uint16 _golferID5, uint32 _leagueID ) public payable{
       uint16[6] memory _golferIDs;
       _golferIDs[0] = _golferID0;
       _golferIDs[1] = _golferID1;
@@ -27,6 +27,11 @@ contract League is LeagueOwnership {
       _golferIDs[4] = _golferID4;
       _golferIDs[5] = _golferID5;
       placeBet(_golferIDs, _leagueID);
+    }
+
+    function getUserGolferIds() public view returns(uint16[6] memory){
+      Bet memory bet = bets[userToBet[msg.sender]];
+      return bet.golferIDs;
     }
 
     function withdrawEther(uint _leagueID) public tournamentOver(leagues[_leagueID].tournamentID)  {
@@ -41,10 +46,6 @@ contract League is LeagueOwnership {
         Bet memory bet = bets[userToBet[msg.sender]];
         return (bet.golferIDs, bet.leagueID, bet.totalScore);
     }
-
-
-
-
 
     modifier noActiveBets()  {
         require(userToBet[msg.sender] == 0);

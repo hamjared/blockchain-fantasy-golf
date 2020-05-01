@@ -79,3 +79,6 @@
   - gets the bet associated with the callers ethereum address
 ## getLeagueLeader(uint leagueID)
   - gets the current leagueLeader
+
+  ## getUserGolferIds()
+  -returns a uint16[6] array with the golfer IDs of the senders bet.

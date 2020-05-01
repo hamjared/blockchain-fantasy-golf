@@ -53,6 +53,24 @@ contract("League", (accounts) => {
 
     })
 
+    it("test get user players", async () => {
+        const web3_eth_abi = require("web3-eth-abi");
+        let aliceGolferIDs = [1,2,3,4,5,6];
+        let betAmount = new BigNumber( 12);
+        let result = await contractInstance.placeBetNonArray(aliceGolferIDs[0], aliceGolferIDs[1], aliceGolferIDs[2], aliceGolferIDs[3], aliceGolferIDs[4], aliceGolferIDs[5], leagueID, {from: alice, value:Web3.utils.toWei(betAmount.toString(), 'ether') } );
+        assert.equal(result.receipt.status, true);
+        result = await contractInstance.getUserGolferIds({from: alice});
+        let resultArray = [];
+        for (let i = 0 ; i < result.length; i++){
+          let curID = new BigNumber(result[i]);
+          curID = curID.toNumber();
+          assert.equal(curID, aliceGolferIDs[i]);
+        }
+
+
+
+    })
+
     it("test updateUserScores", async () => {
         //bob should be the winner
         let aliceGolferIDs = [1,2,3,4,5,6];

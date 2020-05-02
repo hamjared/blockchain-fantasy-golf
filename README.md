@@ -24,4 +24,4 @@ $ truffle migrate
 ```
 
 ## Contract Documentation
-The public functions for the contract are documneted [here](https://github.com/hamjared/blockchain-fantasy-golf/blob/master/documentation/League%20Smart%20Contract.md) 
+The public functions for the contract are documented [here](https://github.com/hamjared/blockchain-fantasy-golf/blob/master/documentation/League%20Smart%20Contract.md) 

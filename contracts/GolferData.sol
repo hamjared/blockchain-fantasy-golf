@@ -26,6 +26,15 @@ contract GolferData is Ownable {
       emit NewGolfer(_id, _name, _cost);
   }
 
+  function createGolfers(bytes32[] memory _names, uint[] memory _ids, uint[] memory _costs) public onlyOwner{
+    require(_names.length == _ids.length);
+    require(_names.length == _costs.length);
+
+    for(uint i = 0 ; i < _names.length; i++){
+      createGolfer(bytes32ToString(_names[i]), _ids[i], _costs[i]);
+    }
+  }
+
   function modifyGolferCost(uint _golferID, uint _newCost) public onlyOwner golferExists(_golferID) {
     golferIDtoGolfer[_golferID].cost = _newCost;
     emit GolferCostUpdated(_golferID, _newCost);
@@ -47,6 +56,10 @@ contract GolferData is Ownable {
 
   }
 
+  function getGolferName(uint _golferID) public golferExists(_golferID) view returns(string memory) {
+    return golferIDtoGolfer[_golferID].name;
+  }
+
   modifier golferExists(uint _golferID){
     require(golferIDtoGolfer[_golferID].golferID == _golferID);
     _;
@@ -58,4 +71,21 @@ contract GolferData is Ownable {
     require(bytes(golferIDtoGolfer[_golferID].name).length == 0);
     _;
   }
+
+  function bytes32ToString(bytes32 x) private pure returns (string memory) {
+    bytes memory bytesString = new bytes(32);
+    uint charCount = 0;
+    for (uint j = 0; j < 32; j++) {
+        byte char = byte(bytes32(uint(x) * 2 ** (8 * j)));
+        if (char != 0) {
+            bytesString[charCount] = char;
+            charCount++;
+        }
+    }
+    bytes memory bytesStringTrimmed = new bytes(charCount);
+    for (uint j = 0; j < charCount; j++) {
+        bytesStringTrimmed[j] = bytesString[j];
+    }
+    return string(bytesStringTrimmed);
+}
 }

@@ -65,7 +65,7 @@ class TopBar extends Component {
         </Menu>
         Your account address: {this.props.userAddress}
         <br />
-        You are in league(ID): 5
+        You are in league(ID): 0
         <hr />
       </div>
     );

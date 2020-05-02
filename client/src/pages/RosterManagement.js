@@ -51,7 +51,7 @@ class RosterManagement extends Component {
     console.log(this.state.rows)
     //get golfers
     let golferArr = []
-    for(let i=1; i<8; i++){
+    for(let i=20; i<85; i++){
       let golfer = await this.props.CZ.methods
         .getGolfer(i) // contains the League Name
         .call({
@@ -59,7 +59,7 @@ class RosterManagement extends Component {
           gas: 10000000,
         });
       console.log(golfer)
-      golferArr.push({name: golfer[0], cost: golfer[1], id: i})
+      golferArr.push({name: golfer[0], cost: golfer[1]/1000000000000000000, id: i})
     }
     let bet = {}
     try{
@@ -74,6 +74,8 @@ class RosterManagement extends Component {
     }catch(err){
 
     }
+    console.log(golferArr)
+    console.log(bet)
     //bet will now equal the array of IDS on the roster
     let newRows = []
     bet = bet[0]
@@ -180,7 +182,7 @@ class RosterManagement extends Component {
     return (
       <div>
         <hr />
-        <h2> Roster Management </h2>
+        <h2> Roster Management (May take up to 20 seconds to load) </h2>
         <hr />
         <Button onClick={this.submitRoster}>Submit Roster</Button>
         <br/>

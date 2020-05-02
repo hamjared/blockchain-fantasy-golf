@@ -96,15 +96,22 @@ class CreateLeague extends Component {
         counter++;
         costs.push(1)
       }
-      console.log(ids)
-      console.log(names)
-      let addGolf = await this.props.CZ.methods
-        .createGolfers(names, ids, costs) // contains the League Name
+      let addGolfer = await this.props.CZ.methods
+        .createGolfer(web3.eth.abi.encodeParameter('string', "TestName"), web3.eth.abi.encodeParameter('uint256', 10), web3.eth.abi.encodeParameter('uint256', 1)) // contains the League Name
         .send({
           from: this.props.userAddress,
           gas: 100000000
         });
-        console.log(addGolf)
+      //   console.log(addGolf)
+      // console.log(ids)
+      // console.log(names)
+      // let addGolf = await this.props.CZ.methods
+      //   .createGolfers(names, ids, costs) // contains the League Name
+      //   .send({
+      //     from: this.props.userAddress,
+      //     gas: 100000000
+      //   });
+      //   console.log(addGolf)
 
       this.setState({
         loading: false,

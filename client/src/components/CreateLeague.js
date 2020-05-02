@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 import { Button, Header, Icon, Modal, Form, Message } from "semantic-ui-react";
-
+import {getTournamentData} from '../GolfApi'
 function mapStateToProps(state) {
     return {
         CZ: state.CZ,
@@ -34,67 +34,54 @@ class CreateLeague extends Component {
     this.setState({
       loading: true,
       errorMessage: "",
-      message: "waiting for blockchain transaction to complete..."
+      message: "waiting for blockchain transaction to complete...",
+      p1: "",
+      p2: "",
+      p3: "",
+      p4: "",
+      p5: "",
+      p6: ""
     });
-    let addresses=[
-      '0xE7b8168B405c4B47E13e194BD017346487aDd600',
-      '0x740e54cdE748A713AA51aB9b8aBAE01Ea749e9CE',
-      '0xC8fc0fdCa28E14F36B20282793763bdEDf31bEaa',
-      '0xCDA1692240647564a586fB403253c899417D63Ce',
-      '0x8049985bfEf0B574EdfA83a431832F8772078a66',
-      '0x8688EeAE90DCc0872B19f5E80057b3B716aEFe8f'
+    // let addresses=[
+    //   this.state.p1, this.state.p2, this.state.p3, this.state.p4, this.state.p5, this.state.p6
+    // ]
+    let addresses = [
+      '0x09CCb34BA839efdBf5807fFFb93A3209A5eA3767',
+      '0xD7221628f3E071037FBdcA322D713D013792F2F0',
+      '0x1706B767f2aF2234FFb1d72099b277Aa2663042d',
+      '0x212546936AaECeA5fB6f0fe3DEB684bB6D168D63',
+      '0x16F708683185E96c4d827293b64e02c8E08642d9',
+      '0xAfaE2ABB0863e1cD8a2DBd838f3A965DA7b20421'
     ]
+    let tournamentData = await getTournamentData()
+    //PUSH GOLFERS HERE TODO
+    console.log(tournamentData);
     try {
+      console.log(this.state.leagueName)
       console.log("MAKE LEAGUE")
       let tournament = await this.props.CZ.methods
-        .createTournament(1, "main", 15818474599, 15818476599) // contains the League Name
+        .createTournament(this.state.tournamentID, "tourneything", 15818474599, 15818476599) // contains the League Name
         .send({
           from: this.props.userAddress,
           gas: 1000000
         });
         console.log(tournament)
-      let creation = await this.props.CZ.methods
-        .createLeague(this.state.tournamentID, this.state.leagueName, addresses) // contains the League Name
-        .send({
+
+      // let creation = await this.props.CZ.methods
+      //   .createLeague(this.state.tournamentID, this.state.leagueName, addresses) // contains the League Name
+      //   .send({
+      //     from: this.props.userAddress,
+      //     gas: 100000000
+      //   });
+        //console.log(creation)
+
+      let leagueNum = await this.props.CZ.methods
+        .getLeagueID() // contains the League Name
+        .call({
           from: this.props.userAddress,
           gas: 1000000
-        });
-
-        // await this.props.CZ.events.NewLeague({
-        //   fromBlock: 0,
-        //   toBlock: 'latest'})
-        //   .on('data', event => {
-        //     console.log('new event:', event)
-        //   })
-        //   .on('changed', event => {
-        //     console.log('event removed from blockchain:', event)
-        //   })
-        //   .on('error', error => {
-        //    console.error(error)
-        //   })
-        // event.get(function(error, logs){
-        //   console.log(error, logs)
-        // });
-        // console.log(event)
-        console.log(creation)
-
-      // var event2 = await this.props.CZ.events.allEvents();
-      // console.log(event2)
-      // var events = await this.props.CZ.getPastEvents("allEvents",
-      // {
-      //   fromBlock: 0,
-      //   toBlock: 'latest'
-      // }).then(events => console.log(events))
-      // console.log("-----------------")
-      // console.log(events)
-
-      // let leagueNum = await this.props.CZ.methods
-      //   .getLeagueID() // contains the League Name
-      //   .call({
-      //     from: this.props.userAddress,
-      //     gas: 1000000
-      //   }).then(console.log());
-      // console.log("LEAGUE NUM" + leagueNum)
+        }).then(console.log());
+      console.log("LEAGUE NUMBER: " + leagueNum)
 
 
       this.setState({
@@ -141,7 +128,7 @@ class CreateLeague extends Component {
                 placeholder="Name"
                 onChange={event =>
                   this.setState({
-                    value: event.target.leagueName
+                    leagueName: event.target.value
                   })
                 }
               />
@@ -150,10 +137,60 @@ class CreateLeague extends Component {
                 placeholder="Tournament ID"
                 onChange={event =>
                   this.setState({
-                    value: event.target.tournamentID
+                    tournamentID: event.target.value
                   })
                 }
               />
+              <label>Player Addresses (6 Required)</label>
+              <input
+                placeholder="Player 1 Address"
+                onChange={event =>
+                  this.setState({
+                    p1: event.target.value
+                  })
+                }
+              />
+              <input
+                placeholder="Player 2 Address"
+                onChange={event =>
+                  this.setState({
+                    p2: event.target.value
+                  })
+                }
+              />
+              <input
+                placeholder="Player 3 Address"
+                onChange={event =>
+                  this.setState({
+                    p3: event.target.value
+                  })
+                }
+              />
+              <input
+                placeholder="Player 4 Address"
+                onChange={event =>
+                  this.setState({
+                    p4: event.target.value
+                  })
+                }
+              />
+              <input
+                placeholder="Player 5 Address"
+                onChange={event =>
+                  this.setState({
+                    p5: event.target.value
+                  })
+                }
+              />
+              <input
+                placeholder="Player 6 Address"
+                onChange={event =>
+                  this.setState({
+                    p6: event.target.value
+                  })
+                }
+              />
+
             </Form.Field>
             <Message error header="Oops!" content={this.state.errorMessage} />
             <Button primary type="submit" loading={this.state.loading}>

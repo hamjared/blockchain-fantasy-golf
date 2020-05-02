@@ -49,21 +49,21 @@ class RosterManagement extends Component {
     await this.setState({rows: []
             })
       await this.setState({rows2: [
-                {name:'Jhon 12', cost:23},
-                {name:'Onhj 23', cost:82},
-                {name:'Jhon 14', cost:28},
-                {name:'Onhj 25', cost:82},
-                {name:'Jhon 16', cost:28},
-                {name:'Onhj 27', cost:82},
-                {name:'Jhon 18', cost:28},
-                {name:'Onhj 29', cost:82},
+                {name:'Jhon 12', cost:20},
+                {name:'Onhj 23', cost:21},
+                {name:'Jhon 14', cost:22},
+                {name:'Onhj 25', cost:23},
+                {name:'Jhon 16', cost:24},
+                {name:'Onhj 27', cost:25},
+                {name:'Jhon 18', cost:26},
+                {name:'Onhj 29', cost:27},
                 {name:'Jhon 10', cost:28},
-                {name:'Onhj 211', cost:82},
-                {name:'Jhon 122', cost:28},
-                {name:'Onhj 233', cost:82},
-                {name:'Jhon 144', cost:28},
-                {name:'Onhj 255', cost:82},
-                {name:'Nohj 366', cost:41}]
+                {name:'Onhj 211', cost:30},
+                {name:'Jhon 122', cost:40},
+                {name:'Onhj 233', cost:50},
+                {name:'Jhon 144', cost:60},
+                {name:'Onhj 255', cost:70},
+                {name:'Nohj 366', cost:80}]
               })
     console.log(this.state.rows)
   };
@@ -121,19 +121,20 @@ class RosterManagement extends Component {
     console.log(this.state.rows.length)
     if(this.state.rows.length == 6){
       console.log("gucci")
-      let golfer = this.state.rows
-      let roster = await this.props.CZ.methods
-        .placeBet([golfer[0].cost, golfer[1].cost, golfer[2].cost, golfer[3].cost, golfer[4].cost, golfer[5].cost], 1) // contains the League Name
-        .send({
-          from: this.props.userAddress,
-          gas: 1000000
-        });
-      console.log(roster)
+      // let golfer = this.state.rows
+      // let roster = await this.props.CZ.methods
+      //   .placeBet([golfer[0].cost, golfer[1].cost, golfer[2].cost, golfer[3].cost, golfer[4].cost, golfer[5].cost], 1) // contains the League Name
+      //   .send({
+      //     from: this.props.userAddress,
+      //     gas: 1000000
+      //   });
+      // console.log(roster)
       let bet = await this.props.CZ.methods
         .getBet() // contains the League Name
-        .send({
+        .call({
           from: this.props.userAddress,
-          gas: 1000000
+          gas: 10000000,
+          gasPrice: '20000000000',
         });
       console.log(bet)
     }

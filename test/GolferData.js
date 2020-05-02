@@ -97,10 +97,25 @@ contract("GolferData", (accounts) => {
 
       let golferInfo = await contractInstance.getGolfer(id);
       assert.equal(golferInfo[0], name);
-      
+
 
 
     })
+
+    it("test getGolfers" , async () => {
+      let names = [web3.utils.fromAscii("Tiger"), web3.utils.fromAscii("Joe")];
+      let ids = [1,2];
+      let costs = [2,2];
+      let result = await contractInstance.createGolfers(names, ids, costs, {from: alice});
+
+      let golferInfo = await contractInstance.getGolfer(ids[0]);
+      assert.equal("Tiger",golferInfo[0]);
+
+
+
+    })
+
+
 
 
 

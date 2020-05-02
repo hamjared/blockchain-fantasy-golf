@@ -14,8 +14,8 @@ contract TournamentData is Ownable {
   event TournamentCreated(uint tournamentID, string name, uint startTime, uint endTime);
 
   struct Tournament {
-  uint32 startTime;
-  uint32 endTime;
+  uint startTime;
+  uint endTime;
   mapping(uint => int) golferIDToScore;
   string tournamentName;
 
@@ -26,7 +26,7 @@ contract TournamentData is Ownable {
 
 
 
-  function createTournament(uint _tournamentID, string memory _name, uint32 _startTime, uint32 _endTime) public onlyOwner tournamentDNE(_tournamentID){
+  function createTournament(uint _tournamentID, string memory _name, uint _startTime, uint _endTime) public onlyOwner tournamentDNE(_tournamentID){
       require(now < _startTime);
       require(_endTime > _startTime);
       require(_tournamentID > 0);
@@ -35,13 +35,21 @@ contract TournamentData is Ownable {
   }
 
 
-  function updateTournamentStartTime(uint _tournamentID,uint32 _newStartTime) public onlyOwner tournamentExists(_tournamentID){
+  function updateTournamentStartTime(uint _tournamentID,uint _newStartTime) public onlyOwner tournamentExists(_tournamentID){
       require(_newStartTime > tournamentIDtoTournament[_tournamentID].startTime);
       tournamentIDtoTournament[_tournamentID].startTime = _newStartTime;
   }
 
-   function updateTournamentEndTime(uint _tournamentID,uint32 _newEndTime) public onlyOwner tournamentExists(_tournamentID){
+   function updateTournamentEndTime(uint _tournamentID,uint _newEndTime) public onlyOwner tournamentExists(_tournamentID){
       tournamentIDtoTournament[_tournamentID].endTime = _newEndTime;
+  }
+
+  function endTournament(uint _tournamentID) public {
+    tournamentIDtoTournament[_tournamentID].endTime = now;
+  }
+
+  function startTournament(uint _tournamentID) public{
+    tournamentIDtoTournament[_tournamentID].startTime = now;
   }
 
   modifier tournamentExists(uint _tournamentID){

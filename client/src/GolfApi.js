@@ -85,6 +85,7 @@ function getTournament(data){
         playerList.push(player);
     }
     tournament.playerList = playerList;
+    console.log(tournament)
     return tournament;
 }
 
@@ -92,7 +93,7 @@ async function handleApiResponse() {
     var data = await fetchGolfApi();
     return getTournament(data);
 }
-  
+
 function  getTournamentData(){
     return handleApiResponse();
 }

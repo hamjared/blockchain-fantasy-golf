@@ -141,6 +141,22 @@ contract("League", (accounts) => {
 
     })
 
+    it("test getBets", async () => {
+        let aliceGolferIDs = [1,2,3,4,5,6];
+        let bobGolferIDs = [2,3,4,5,6,7];
+        let edGolferIDs = [3,4,5,6,7,8];
+        let betAmount = new BigNumber( 12);
+        await contractInstance.placeBet(aliceGolferIDs, leagueID,  {from: alice, value:Web3.utils.toWei(betAmount.toString(), 'ether') } );
+        await contractInstance.placeBet(bobGolferIDs, leagueID,  {from: bob, value:Web3.utils.toWei(betAmount.toString(), 'ether') } );
+        await contractInstance.placeBet(edGolferIDs, leagueID,  {from: ed, value:Web3.utils.toWei(betAmount.toString(), 'ether') } );
+
+        let result = await contractInstance.getBets(leagueID);
+
+        assert.equal(result[0][0], alice);
+        assert.equal(result[1][0][0].toNumber(), 1);
+
+
+    })
 
 
 

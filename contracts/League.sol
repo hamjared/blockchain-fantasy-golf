@@ -6,7 +6,7 @@ import "./LeagueOwnership.sol";
 contract League is LeagueOwnership {
     event NewBet(uint betID);
 
-    
+
 
     function getLeagueMoneyPot(uint _leagueID) public view returns(uint){
       return leagues[_leagueID].moneyPot;
@@ -18,6 +18,8 @@ contract League is LeagueOwnership {
         leagues[_leagueID].moneyPot += msg.value;
         emit NewBet(id);
     }
+
+
 
     function placeBetNonArray(uint16 _golferID0, uint16 _golferID1, uint16 _golferID2, uint16 _golferID3, uint16 _golferID4, uint16 _golferID5, uint32 _leagueID ) public payable{
       uint16[6] memory _golferIDs;
@@ -46,6 +48,20 @@ contract League is LeagueOwnership {
     function getBet() public view returns (uint16[6] memory, uint32, int){
         Bet memory bet = bets[userToBet[msg.sender]];
         return (bet.golferIDs, bet.leagueID, bet.totalScore);
+    }
+
+    function getBets(uint32 _leagueID) public view returns (address[6] memory, uint16[6][6] memory, int[6] memory){
+      address[6] memory users = leagueIDtoUsers[_leagueID];
+      uint16[6][6] memory golferIDs;
+      int[6] memory scores;
+      for(uint i = 0 ; i < users.length; i++){
+        Bet memory bet = bets[userToBet[users[i]]];
+        golferIDs[i] = bet.golferIDs;
+        scores[i] = bet.totalScore;
+      }
+
+      return (users, golferIDs, scores);
+
     }
 
     modifier noActiveBets()  {

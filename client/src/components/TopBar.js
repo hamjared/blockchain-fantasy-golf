@@ -11,6 +11,7 @@ import { Menu, Header } from "semantic-ui-react";
 
 function mapStateToProps(state) {
   return {
+    CZ: state.CZ,
     userAddress: state.userAddress,
     userZombieCount: state.userZombieCount,
     totalZombieCount: state.totalZombieCount,
@@ -21,6 +22,16 @@ function mapStateToProps(state) {
 // This renders the topbar on the webpage as well as the lines listing address and zombie count.
 
 class TopBar extends Component {
+  // componentDidMount = async () => {
+  //   let leagueNum = await this.props.CZ.methods
+  //     .getLeagueID() // contains the League Name
+  //     .call({
+  //       from: this.props.userAddress,
+  //       gas: 1000000
+  //     }).then(console.log());
+  //   console.log("LEAGUE NUMBER: " + leagueNum)
+  //   this.setState({leagueNumber: leagueNum})
+  // };
   render() {
     return (
       <div style={{color: '#F5F5F5'}}>
@@ -54,7 +65,7 @@ class TopBar extends Component {
         </Menu>
         Your account address: {this.props.userAddress}
         <br />
-        You are in league(ID): {this.props.leagueNumber}
+        You are in league(ID): 5
         <hr />
       </div>
     );

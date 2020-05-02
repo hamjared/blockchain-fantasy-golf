@@ -8168,10 +8168,150 @@
       "links": {},
       "address": "0x056C25dEF39BD54F32E27Af673D20e71545317e7",
       "transactionHash": "0xd3c9246112717935d9380ecd689079ed94c843843336e17d7f3e420cc2f432bf"
+    },
+    "5777": {
+      "events": {
+        "0xc93f30e5608cb7d10da279088d68019a15a03744a41741842cfcaf68ad4511b5": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "golferID",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "newCost",
+              "type": "uint256"
+            }
+          ],
+          "name": "GolferCostUpdated",
+          "type": "event"
+        },
+        "0xb4c55452b3a0fcd370281067a5378b1d6b0adb1584de15f43fbe8dd04021610b": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "betID",
+              "type": "uint256"
+            }
+          ],
+          "name": "NewBet",
+          "type": "event"
+        },
+        "0x316e331d8ddc20f2a441eb5d779933dabf9d87c1f3d2010f4f566d6b07e645ff": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "golferID",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "internalType": "string",
+              "name": "name",
+              "type": "string"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "cost",
+              "type": "uint256"
+            }
+          ],
+          "name": "NewGolfer",
+          "type": "event"
+        },
+        "0xe7b7bffb910588abb6e9a5c1a8c4b9a1544cd5050d71d14b57f3b468ca0245e2": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "leagueID",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "internalType": "string",
+              "name": "leagueName",
+              "type": "string"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "tournamentID",
+              "type": "uint256"
+            }
+          ],
+          "name": "NewLeague",
+          "type": "event"
+        },
+        "0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "previousOwner",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "newOwner",
+              "type": "address"
+            }
+          ],
+          "name": "OwnershipTransferred",
+          "type": "event"
+        },
+        "0xf921e1476612bff3a21b96b63ae8a3ac03579129aad3ed13624285327365837c": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "tournamentID",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "internalType": "string",
+              "name": "name",
+              "type": "string"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "startTime",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "endTime",
+              "type": "uint256"
+            }
+          ],
+          "name": "TournamentCreated",
+          "type": "event"
+        }
+      },
+      "links": {},
+      "address": "0xc8C8d63fA728ed7bac59AC34C1D35cc94057E53d",
+      "transactionHash": "0x9433b747dab39ca7ed10f80603ba6f770c7b5adbac9737d8556cd7c3586be506"
     }
   },
   "schemaVersion": "3.0.23",
-  "updatedAt": "2020-05-01T02:35:06.393Z",
+  "updatedAt": "2020-05-01T20:36:51.851Z",
+  "networkType": "ethereum",
   "devdoc": {
     "methods": {
       "isOwner()": {

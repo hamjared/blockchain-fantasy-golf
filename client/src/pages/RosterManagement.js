@@ -17,7 +17,7 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import ZombieCard from "../components/zombieCard";
 import { Button } from "semantic-ui-react";
-
+import Web3 from "web3";
 function mapStateToProps(state) {
   return {
     CZ: state.CZ,
@@ -48,28 +48,46 @@ class RosterManagement extends Component {
     await this.makeZombieCards();
     await this.setState({rows: []
             })
-      await this.setState({rows2: [
-                {name:'Jhon 12', cost:20},
-                {name:'Onhj 23', cost:21},
-                {name:'Jhon 14', cost:22},
-                {name:'Onhj 25', cost:23},
-                {name:'Jhon 16', cost:24},
-                {name:'Onhj 27', cost:25},
-                {name:'Jhon 18', cost:26},
-                {name:'Onhj 29', cost:27},
-                {name:'Jhon 10', cost:28},
-                {name:'Onhj 211', cost:30},
-                {name:'Jhon 122', cost:40},
-                {name:'Onhj 233', cost:50},
-                {name:'Jhon 144', cost:60},
-                {name:'Onhj 255', cost:70},
-                {name:'Nohj 366', cost:80}]
-              })
     console.log(this.state.rows)
+    //get golfers
+    let golferArr = []
+    for(let i=1; i<8; i++){
+      let golfer = await this.props.CZ.methods
+        .getGolfer(i) // contains the League Name
+        .call({
+          from: this.props.userAddress,
+          gas: 10000000,
+        });
+      console.log(golfer)
+      golferArr.push({name: golfer[0], cost: golfer[1], id: i})
+    }
+    let bet = {}
+    try{
+      bet = await this.props.CZ.methods
+        .getBet() // contains the League Name
+        .call({
+          from: this.props.userAddress,
+          gas: 10000000,
+          gasPrice: '20000000000',
+        });
+      console.log(bet[0])
+    }catch(err){
+
+    }
+    //bet will now equal the array of IDS on the roster
+    let newRows = []
+    bet = bet[0]
+    for(let i = 0; i < golferArr.length; i++){
+      for(let j = 0; j < 6; j++){
+        if(golferArr[i].id == bet[j]){
+          newRows.push(golferArr[i])
+          golferArr.splice(i, 1)
+        }
+      }
+    }
+    this.setState({rows2: golferArr})
+    this.setState({rows: newRows})
   };
-  createData = async (name, calories, fat, carbs, protein) => {
-    return { name, calories, fat, carbs, protein };
-  }
 
   onChange = async (e, pageInfo) => {
     await this.setState({ activePage: pageInfo.activePage });
@@ -121,22 +139,23 @@ class RosterManagement extends Component {
     console.log(this.state.rows.length)
     if(this.state.rows.length == 6){
       console.log("gucci")
-      // let golfer = this.state.rows
-      // let roster = await this.props.CZ.methods
-      //   .placeBet([golfer[0].cost, golfer[1].cost, golfer[2].cost, golfer[3].cost, golfer[4].cost, golfer[5].cost], 1) // contains the League Name
-      //   .send({
-      //     from: this.props.userAddress,
-      //     gas: 1000000
-      //   });
-      // console.log(roster)
-      let bet = await this.props.CZ.methods
-        .getBet() // contains the League Name
-        .call({
+      let golfer = this.state.rows
+      let roster = await this.props.CZ.methods
+        .placeBetNonArray(golfer[0].id, golfer[1].id, golfer[2].id, golfer[3].id, golfer[4].id, golfer[5].id, 0) // contains the League Name
+        .send({
           from: this.props.userAddress,
-          gas: 10000000,
-          gasPrice: '20000000000',
+          gas: 1000000,
+          value: 6
         });
-      console.log(bet)
+      console.log(roster)
+      // let bet = await this.props.CZ.methods
+      //   .getBet() // contains the League Name
+      //   .call({
+      //     from: this.props.userAddress,
+      //     gas: 10000000,
+      //     gasPrice: '20000000000',
+      //   });
+      // console.log(bet)
     }
   }
 

@@ -29,7 +29,7 @@ async function initBlockchain(web3) {
   const deployedNetwork = CryptoZombiesContract.networks[networkId];
   const instance = new web3.eth.Contract(
     CryptoZombiesContract.abi,
-    '0x2910E79a6327a00e2463Dd7628E080B978621fae',
+    '0x72B33922bbd96B70d6ff889800dD250dc6C98e3f',
   );
   console.log(instance)
   // put state data into the REDUX store for easy access from other pages and components

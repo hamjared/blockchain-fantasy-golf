@@ -56,26 +56,26 @@ class CreateLeague extends Component {
     console.log(addresses)
     let tournamentData = await getTournamentData()
     //PUSH GOLFERS HERE TODO
-    console.log(tournamentData.players);
+    console.log(tournamentData.playerList);
     //.Name    .PlayerID
     try {
       console.log(this.state.leagueName)
       console.log("MAKE LEAGUE")
-      let tournament = await this.props.CZ.methods
-        .createTournament(this.state.tournamentID, "tourneything", 15818474599, 15818476599) // contains the League Name
-        .send({
-          from: this.props.userAddress,
-          gas: 1000000
-        });
-        console.log(tournament)
-
-      let creation = await this.props.CZ.methods
-        .createLeague(this.state.tournamentID, this.state.leagueName, addresses) // contains the League Name
-        .send({
-          from: this.props.userAddress,
-          gas: 100000000
-        });
-        console.log(creation)
+      // let tournament = await this.props.CZ.methods
+      //   .createTournament(this.state.tournamentID, "tourneything", 15818474599, 15818476599) // contains the League Name
+      //   .send({
+      //     from: this.props.userAddress,
+      //     gas: 1000000
+      //   });
+      //   console.log(tournament)
+        const web3 = new Web3(window.ethereum);
+      // let creation = await this.props.CZ.methods
+      //   .createLeague(this.state.tournamentID, this.state.leagueName, addresses) // contains the League Name
+      //   .send({
+      //     from: this.props.userAddress,
+      //     gas: 100000000
+      //   });
+      //   console.log(creation)
 
       let leagueNum = await this.props.CZ.methods
         .getLeagueID() // contains the League Name
@@ -85,6 +85,26 @@ class CreateLeague extends Component {
         }).then(console.log());
       console.log("LEAGUE NUMBER: " + leagueNum)
 
+      //create GOLFERS
+      let names = []
+      let ids = []
+      let costs = []
+      let counter = 0
+      for(let i in tournamentData.playerList){
+        names.push(web3.utils.fromAscii(tournamentData.playerList[i].name))
+        ids.push(counter)
+        counter++;
+        costs.push(1)
+      }
+      console.log(ids)
+      console.log(names)
+      let addGolf = await this.props.CZ.methods
+        .createGolfers(names, ids, costs) // contains the League Name
+        .send({
+          from: this.props.userAddress,
+          gas: 100000000
+        });
+        console.log(addGolf)
 
       this.setState({
         loading: false,

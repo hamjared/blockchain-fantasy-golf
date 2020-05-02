@@ -14,7 +14,7 @@ const tournamentStartTime = parseInt(new Date().getTime()/1000 + 3600);
 const tournamentEndTime = tournamentStartTime + 3600;
 let leagueID = -1;
 contract("League", (accounts) => {
-    let [alice, bob, carol] = accounts;
+    let [alice, bob, carol, dave, ed, fred] = accounts;
     let contractInstance;
     beforeEach(async () => {
         contractInstance = await League.new();
@@ -23,7 +23,7 @@ contract("League", (accounts) => {
         }
 
         await contractInstance.createTournament(tournamentID, tournamentName, tournamentStartTime, tournamentEndTime, {from: alice});
-        let leagueInfo = await contractInstance.createLeague(tournamentID, "Cool League", {from: alice});
+        let leagueInfo = await contractInstance.createLeague(tournamentID, "Cool League", [alice, bob, carol, dave, ed, fred], {from: alice});
         leagueID = leagueInfo.logs[0].args.leagueID;
 
 
@@ -40,7 +40,7 @@ contract("League", (accounts) => {
     it("test placeBet", async () => {
         let aliceGolferIDs = [1,2,3,4,5,6];
         let betAmount = new BigNumber( 12);
-        let result = await contractInstance.placeBet(aliceGolferIDs, leagueID, {from: alice, value:Web3.utils.toWei(betAmount.toString(), 'ether') } );
+        let result = await contractInstance.placeBet(aliceGolferIDs, leagueID,  {from: alice, value:Web3.utils.toWei(betAmount.toString(), 'ether') } );
         assert.equal(result.receipt.status, true);
 
     })

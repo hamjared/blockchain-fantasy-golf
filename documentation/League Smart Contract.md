@@ -82,3 +82,8 @@
 
   ## getUserGolferIds()
   -returns a uint16[6] array with the golfer IDs of the senders bet.
+
+  ## getBets(uint leagueID) returns (address[6] memory, uint16[6][6] memory, int[6] memory) {
+    returns all bets associated with the league
+    Return order: users, golferIDs, totalScore
+  }

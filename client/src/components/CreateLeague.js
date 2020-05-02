@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 //import getZombieCount from "../utils/getZombieCount";
 import { connect } from "react-redux";
-
+import Web3 from "web3";
 import { Button, Header, Icon, Modal, Form, Message } from "semantic-ui-react";
 import {getTournamentData} from '../GolfApi'
 function mapStateToProps(state) {
@@ -53,9 +53,11 @@ class CreateLeague extends Component {
       '0x16F708683185E96c4d827293b64e02c8E08642d9',
       '0xAfaE2ABB0863e1cD8a2DBd838f3A965DA7b20421'
     ]
+    console.log(addresses)
     let tournamentData = await getTournamentData()
     //PUSH GOLFERS HERE TODO
-    console.log(tournamentData);
+    console.log(tournamentData.players);
+    //.Name    .PlayerID
     try {
       console.log(this.state.leagueName)
       console.log("MAKE LEAGUE")
@@ -67,13 +69,13 @@ class CreateLeague extends Component {
         });
         console.log(tournament)
 
-      // let creation = await this.props.CZ.methods
-      //   .createLeague(this.state.tournamentID, this.state.leagueName, addresses) // contains the League Name
-      //   .send({
-      //     from: this.props.userAddress,
-      //     gas: 100000000
-      //   });
-        //console.log(creation)
+      let creation = await this.props.CZ.methods
+        .createLeague(this.state.tournamentID, this.state.leagueName, addresses) // contains the League Name
+        .send({
+          from: this.props.userAddress,
+          gas: 100000000
+        });
+        console.log(creation)
 
       let leagueNum = await this.props.CZ.methods
         .getLeagueID() // contains the League Name

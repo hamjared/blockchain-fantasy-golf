@@ -1,6 +1,43 @@
 import React, { Component } from "react";
+import {
+  Card,
+  Grid,
+  Input,
+  Segment,
+  Pagination,
+} from "semantic-ui-react";
+import { connect } from "react-redux";
+import { makeStyles } from '@material-ui/core/styles';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableContainer from '@material-ui/core/TableContainer';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import Paper from '@material-ui/core/Paper';
+import ZombieCard from "../components/zombieCard";
+import { Button } from "semantic-ui-react";
+import { Menu, Header } from "semantic-ui-react";
 
+function mapStateToProps(state) {
+  return {
+    CZ: state.CZ,
+    totalZombieCount: state.totalZombieCount,
+    userAddress: state.userAddress
+  };
+}
 class Greeting extends Component {
+  state = {
+    classes: {
+      table: {
+        minWidth: 650
+      }
+    }
+  };
+  componentDidMount = async () => {
+
+  };
+
   render() {
     const imgStyle = {
       display: "block",
@@ -10,7 +47,10 @@ class Greeting extends Component {
     };
 
     return (
+
       <div>
+
+
         <br />
         <h2 style={{ textAlign: "center" }}>
           {" "}

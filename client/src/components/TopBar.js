@@ -51,9 +51,6 @@ class TopBar extends Component {
               <Button primary>Matches</Button>
             </Link>
           </Menu.Item>
-          <Menu.Item>
-              <Button primary>End Tournament</Button>
-          </Menu.Item>
           <Menu.Item position="right">
             <Link to={{ pathname: "/" }}>
               <Header style={{color: '#F5F5F5'}} size="large">Cryptogolf DApp </Header>

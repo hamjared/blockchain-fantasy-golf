@@ -19,7 +19,7 @@
   "dependencies": {
     "big-integer": "^1.6.48",
     "bignumber.js": "^9.0.0",
-    "node-fetch": "^2.6.0",
+    "node-fetch": "^2.6.7",
     "vue": "^2.6.11",
     "vue-i18n": "^8.15.4",
     "vue-images-loaded": "^1.1.2",
